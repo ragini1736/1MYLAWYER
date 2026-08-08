@@ -5,7 +5,7 @@ function LegalLibrary() {
   const [search, setSearch] = useState("");
   const [documents, setDocuments] = useState([]);
 
-  const BASE = "http://localhost:5000";
+  const BASE = "https://onemylawyer.onrender.com/";
 
 useEffect(() => {
   fetch(`${BASE}/api/legal-library`)
