@@ -197,7 +197,7 @@ minHeight:"55px"
 
 {/* Download Button */}
 <a
-  href={`http://localhost:5000/api/legal-library/${doc._id}/download`}
+  href={`https://onemylawyer.onrender.com/api/legal-library/${doc._id}/download`}
   className="btn btn-gold w-100"
   download
 >

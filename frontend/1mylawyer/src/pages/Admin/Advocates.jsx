@@ -16,7 +16,7 @@ import {
 } from "../../services/adminService";
 
 /* ── constants ─────────────────────────────────────────────── */
-const BASE = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const BASE = import.meta.env.VITE_API_URL || "https://onemylawyer.onrender.com/";
 const SPECS = [
   "Civil Law","Criminal Law","Family Law","Property Law",
   "Corporate Law","Cyber Law","Labour Law","Tax Law","Constitutional Law",

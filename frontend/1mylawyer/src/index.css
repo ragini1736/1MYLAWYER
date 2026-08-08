@@ -2492,3 +2492,84 @@ select:focus {
 .invalid-feedback{
     display:block;
 }
+
+@media (max-width: 768px) {
+  .auth-page,
+  .login-page,
+  .register-page {
+    padding: 16px;
+    min-height: 100vh;
+    align-items: flex-start;
+  }
+
+  .auth-card,
+  .login-card,
+  .register-card,
+  .form-card {
+    width: 100%;
+    max-width: 420px;
+    margin: 0 auto;
+    padding: 20px 16px;
+    border-radius: 18px;
+  }
+
+  .auth-title,
+  .login-title,
+  .register-title {
+    font-size: 1.6rem;
+    line-height: 1.2;
+  }
+
+  .auth-subtitle,
+  .login-subtitle,
+  .register-subtitle {
+    font-size: 0.95rem;
+    line-height: 1.5;
+  }
+
+  .auth-input,
+  .login-input,
+  .register-input,
+  .form-control {
+    height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .auth-btn,
+  .login-btn,
+  .register-btn,
+  .btn {
+    width: 100%;
+    height: 48px;
+    font-size: 0.95rem;
+  }
+
+  .auth-links,
+  .login-links,
+  .register-links {
+    font-size: 0.9rem;
+    text-align: center;
+  }
+
+  .auth-row,
+  .login-row,
+  .register-row {
+    gap: 14px;
+  }
+}
+
+@media (max-width: 480px) {
+  .auth-card,
+  .login-card,
+  .register-card,
+  .form-card {
+    padding: 18px 14px;
+    border-radius: 16px;
+  }
+
+  .auth-title,
+  .login-title,
+  .register-title {
+    font-size: 1.35rem;
+  }
+}

@@ -20,7 +20,7 @@ import {
 
 /* ── constants ──────────────────────────────────────────── */
 const CATEGORIES = ["All", "Government", "Court", "Notice", "Property", "Employment", "Family", "Corporate", "Other"];
-const BASE        = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const BASE        = import.meta.env.VITE_API_URL || "https://onemylawyer.onrender.com/";
 
 const fmtSize = (bytes) => {
   if (!bytes) return "—";

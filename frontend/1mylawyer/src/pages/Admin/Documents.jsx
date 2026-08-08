@@ -18,7 +18,7 @@ import AdminLayout from "../../components/Admin/AdminLayout";
 import ConfirmModal from "../../components/Admin/ConfirmModal";
 import { getAllDocuments, adminDeleteDocument } from "../../services/adminService";
 
-const BASE     = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const BASE     = import.meta.env.VITE_API_URL || "https://onemylawyer.onrender.com/";
 const fmtDate  = (d) => d ? new Date(d).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" }) : "—";
 const fmtBytes = (b) => {
   if (!b) return "—";
