@@ -1,0 +1,126 @@
+:root {
+  --primary-color: #0B1F3A;
+  --secondary-color: #D4AF37;
+  --light-gray: #f8f9fa;
+  --dark-gray: #343a40;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--light-gray);
+}
+
+/* .lm-navbar styles are defined in index.css (the project design system).
+   Removed duplicate rules here that were creating a double shadow under the navbar. */
+
+/* .lm-navbar-scrolled is also defined in index.css. Removed duplicate here. */
+/*
+  This rule was overriding the active link color in the new nb-bar.
+  The new navbar handles its own link colors, so this global override is removed.
+*/
+@media (min-width: 992px) {
+  .nb-mobile-only { display: none !important; }
+}
+
+.nav-link.active,
+.nav-link:hover {
+  color: var(--secondary-color) !important;
+}
+
+.btn-gold {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+  border: 1px solid var(--secondary-color);
+  font-weight: 600;
+  transition: all 0.3s;
+}
+
+.btn-gold:hover {
+  background-color: #c8a030;
+  border-color: #c8a030;
+  color: var(--primary-color);
+}
+
+.btn-outline-gold {
+  color: var(--secondary-color);
+  border-color: var(--secondary-color);
+  font-weight: 600;
+}
+
+.btn-outline-gold:hover {
+  background-color: var(--secondary-color);
+  color: var(--primary-color);
+}
+
+.lm-footer {
+  background-color: var(--primary-color);
+  color: #a7aebb;
+  padding-top: 1rem;
+}
+
+.lm-footer-brand {
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: white;
+}
+
+.lm-footer-brand .accent {
+  color: var(--secondary-color);
+}
+
+.lm-footer-links {
+  list-style: none;
+  padding: 0;
+}
+
+.lm-footer-links a {
+  color: #a7aebb;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.lm-footer-links a:hover {
+  color: white;
+  padding-left: 5px;
+}
+
+.lm-footer-bottom {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem 0;
+  font-size: 0.9rem;
+}
+.chat-container {
+  height: 75vh;
+}
+
+.chat-list {
+  border-right: 1px solid #dee2e6;
+  background-color: #fff;
+}
+
+.chat-list .list-group-item-action:hover, .chat-list .list-group-item-action.active {
+  background-color: var(--light-gray);
+}
+
+.chat-window {
+  display: flex;
+  flex-direction: column;
+}
+
+.message-bubble {
+  padding: 0.75rem 1rem;
+  border-radius: 1.25rem;
+  max-width: 75%;
+}
+
+.message-bubble.sent {
+  background-color: var(--primary-color);
+  color: white;
+  border-bottom-right-radius: 0.25rem;
+}
+
+.message-bubble.received {
+  background-color: #e9ecef;
+  color: var(--dark-gray);
+  border-bottom-left-radius: 0.25rem;
+}

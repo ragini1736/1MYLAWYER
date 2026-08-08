@@ -1,0 +1,674 @@
+/* ============================================================
+   MODULE 1 — FOUNDATION
+   1MyLawyer Design System
+   ============================================================
+   Sections:
+     1.  CSS Reset
+     2.  Design Tokens (CSS Variables)
+     3.  Typography
+     4.  Spacing Scale
+     5.  Radius
+     6.  Shadow System
+     7.  Transitions
+     8.  Animations (@keyframes)
+     9.  Containers
+     10. Utility Classes
+     11. Scrollbar
+     12. Selection
+     13. Accessibility
+     14. Reduced Motion
+   ============================================================ */
+
+
+/* ── 1. CSS RESET ────────────────────────────────────────────
+   Minimal, purposeful reset.
+   We layer on top of Bootstrap so we only reset what Bootstrap
+   doesn't already handle or what conflicts with our design.
+   ─────────────────────────────────────────────────────────── */
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--text-base);
+  line-height: var(--leading-normal);
+  color: var(--color-text-primary);
+  background-color: var(--color-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+img,
+video,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+input,
+button,
+select,
+textarea {
+  font: inherit;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+ul,
+ol {
+  list-style: none;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-serif);
+  line-height: var(--leading-tight);
+  color: var(--color-text-heading);
+}
+
+
+/* ── 2. DESIGN TOKENS (CSS Variables) ───────────────────────
+   Single source of truth for every visual value.
+   All values expressed as tokens — never magic numbers.
+   ─────────────────────────────────────────────────────────── */
+
+:root {
+
+  /* ── Colour palette ─────────────────────────── */
+
+  /* Navy scale — primary brand */
+  --navy-950: #030b16;
+  --navy-900: #060e1e;
+  --navy-800: #0a1628;
+  --navy-700: #0d1f3c;
+  --navy-600: #163352;
+  --navy-500: #1e4976;
+  --navy-400: #2563a8;
+
+  /* Gold scale — accent brand */
+  --gold-700: #8a6420;
+  --gold-600: #a07830;
+  --gold-500: #c9a84c;
+  --gold-400: #d4af37;
+  --gold-300: #e8c96d;
+  --gold-200: #f0dda0;
+  --gold-100: #fdf8ec;
+  --gold-50:  #fefcf5;
+
+  /* Neutral scale */
+  --gray-950: #0a0b0d;
+  --gray-900: #111827;
+  --gray-800: #1f2937;
+  --gray-700: #374151;
+  --gray-600: #4b5563;
+  --gray-500: #6b7280;
+  --gray-400: #9ca3af;
+  --gray-300: #d1d5db;
+  --gray-200: #e5e9f0;
+  --gray-100: #f1f3f7;
+  --gray-50:  #f8f9fc;
+
+  /* Semantic colours */
+  --color-success:        #10b981;
+  --color-success-light:  rgba(16, 185, 129, .12);
+  --color-warning:        #f59e0b;
+  --color-warning-light:  rgba(245, 158, 11, .12);
+  --color-danger:         #ef4444;
+  --color-danger-light:   rgba(239, 68, 68, .10);
+  --color-info:           #3b82f6;
+  --color-info-light:     rgba(59, 130, 246, .10);
+
+  /* Intent tokens — used in components */
+  --color-bg:               #ffffff;
+  --color-bg-subtle:        var(--gray-50);
+  --color-bg-muted:         var(--gray-100);
+  --color-text-primary:     var(--gray-900);
+  --color-text-secondary:   var(--gray-600);
+  --color-text-muted:       var(--gray-400);
+  --color-text-heading:     var(--navy-800);
+  --color-text-on-dark:     #ffffff;
+  --color-text-on-dark-muted: rgba(255,255,255,.72);
+  --color-border:           var(--gray-200);
+  --color-border-muted:     var(--gray-100);
+
+  /* Brand shortcuts */
+  --brand-primary:    var(--navy-800);
+  --brand-accent:     var(--gold-500);
+  --brand-accent-dim: var(--gold-100);
+
+  /* ── Typography ─────────────────────────────── */
+  --font-serif: 'Playfair Display', Georgia, 'Times New Roman', serif;
+  --font-sans:  'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono:  'JetBrains Mono', 'Fira Code', 'Courier New', monospace;
+
+  /* Font sizes — fluid minor third scale */
+  --text-xs:   0.75rem;   /* 12px */
+  --text-sm:   0.813rem;  /* 13px */
+  --text-base: 0.9375rem; /* 15px */
+  --text-md:   1rem;      /* 16px */
+  --text-lg:   1.125rem;  /* 18px */
+  --text-xl:   1.25rem;   /* 20px */
+  --text-2xl:  1.5rem;    /* 24px */
+  --text-3xl:  1.875rem;  /* 30px */
+  --text-4xl:  2.25rem;   /* 36px */
+  --text-5xl:  3rem;      /* 48px */
+
+  /* Font weights */
+  --weight-regular: 400;
+  --weight-medium:  500;
+  --weight-semibold:600;
+  --weight-bold:    700;
+  --weight-extrabold:800;
+
+  /* Line heights */
+  --leading-none:   1;
+  --leading-tight:  1.2;
+  --leading-snug:   1.35;
+  --leading-normal: 1.6;
+  --leading-relaxed:1.75;
+
+  /* Letter spacing */
+  --tracking-tight: -0.02em;
+  --tracking-normal: 0;
+  --tracking-wide:  0.04em;
+  --tracking-wider: 0.07em;
+  --tracking-caps:  0.1em;
+
+  /* ── Spacing scale ──────────────────────────── */
+  /* 4px base unit — consistent throughout */
+  --space-1:  0.25rem;   /*  4px */
+  --space-2:  0.5rem;    /*  8px */
+  --space-3:  0.75rem;   /* 12px */
+  --space-4:  1rem;      /* 16px */
+  --space-5:  1.25rem;   /* 20px */
+  --space-6:  1.5rem;    /* 24px */
+  --space-7:  1.75rem;   /* 28px */
+  --space-8:  2rem;      /* 32px */
+  --space-10: 2.5rem;    /* 40px */
+  --space-12: 3rem;      /* 48px */
+  --space-16: 4rem;      /* 64px */
+  --space-20: 5rem;      /* 80px */
+
+  /* ── Border radius ──────────────────────────── */
+  --radius-none:  0;
+  --radius-xs:    4px;
+  --radius-sm:    6px;
+  --radius-md:    10px;
+  --radius-lg:    14px;
+  --radius-xl:    18px;
+  --radius-2xl:   24px;
+  --radius-3xl:   32px;
+  --radius-full:  9999px;
+
+  /* ── Shadow system ──────────────────────────── */
+  /* All shadows use navy tint — never pure black */
+  --shadow-xs:
+    0 1px 2px rgba(6, 14, 30, .05);
+
+  --shadow-sm:
+    0 1px 3px rgba(6, 14, 30, .08),
+    0 1px 2px rgba(6, 14, 30, .05);
+
+  --shadow-md:
+    0 4px 16px rgba(6, 14, 30, .10);
+
+  --shadow-lg:
+    0 10px 32px rgba(6, 14, 30, .12),
+    0 4px 10px rgba(6, 14, 30, .08);
+
+  --shadow-xl:
+    0 20px 48px rgba(6, 14, 30, .16),
+    0 8px 20px rgba(6, 14, 30, .10);
+
+  --shadow-2xl:
+    0 32px 72px rgba(6, 14, 30, .22);
+
+  /* Coloured glow shadows */
+  --shadow-gold:
+    0 4px 20px rgba(201, 168, 76, .30);
+
+  --shadow-gold-lg:
+    0 8px 32px rgba(201, 168, 76, .40);
+
+  /* Inset — used for pressed states */
+  --shadow-inset:
+    inset 0 2px 4px rgba(6, 14, 30, .08);
+
+  /* ── Transitions ────────────────────────────── */
+  /* Use variables — never magic timing in component CSS */
+  --duration-instant: 100ms;
+  --duration-fast:    150ms;
+  --duration-normal:  220ms;
+  --duration-slow:    350ms;
+  --duration-slower:  500ms;
+
+  --ease-out:     cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-in-out:  cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+
+  /* Shorthand transitions */
+  --transition-base:     all var(--duration-normal) var(--ease-in-out);
+  --transition-fast:     all var(--duration-fast) var(--ease-in-out);
+  --transition-color:    color var(--duration-fast) var(--ease-in-out),
+                         background-color var(--duration-fast) var(--ease-in-out),
+                         border-color var(--duration-fast) var(--ease-in-out);
+  --transition-shadow:   box-shadow var(--duration-normal) var(--ease-out);
+  --transition-transform: transform var(--duration-normal) var(--ease-spring);
+}
+
+
+/* ── 3. TYPOGRAPHY ───────────────────────────────────────────
+   Applied globally. Components only override when genuinely needed.
+   ─────────────────────────────────────────────────────────── */
+
+h1 { font-size: clamp(var(--text-3xl), 5vw, var(--text-5xl)); font-weight: var(--weight-extrabold); }
+h2 { font-size: clamp(var(--text-2xl), 4vw, var(--text-4xl)); font-weight: var(--weight-bold); }
+h3 { font-size: clamp(var(--text-xl), 3vw, var(--text-3xl));  font-weight: var(--weight-bold); }
+h4 { font-size: var(--text-xl);  font-weight: var(--weight-semibold); }
+h5 { font-size: var(--text-lg);  font-weight: var(--weight-semibold); }
+h6 { font-size: var(--text-base); font-weight: var(--weight-semibold); }
+
+p {
+  font-size: var(--text-base);
+  line-height: var(--leading-relaxed);
+  color: var(--color-text-secondary);
+}
+
+a:not([class]) {
+  color: var(--navy-600);
+  text-underline-offset: 3px;
+  transition: var(--transition-color);
+}
+
+a:not([class]):hover {
+  color: var(--gold-600);
+}
+
+strong, b { font-weight: var(--weight-semibold); }
+small     { font-size: var(--text-xs); }
+
+code, kbd, pre {
+  font-family: var(--font-mono);
+  font-size: 0.875em;
+}
+
+
+/* ── 4. SPACING SCALE (utility aliases) ─────────────────────
+   Supplements Bootstrap spacing.
+   Only add what Bootstrap doesn't already provide.
+   ─────────────────────────────────────────────────────────── */
+
+/* Section vertical rhythm */
+.section-lg { padding-top: var(--space-20); padding-bottom: var(--space-20); }
+.section-md { padding-top: var(--space-16); padding-bottom: var(--space-16); }
+.section-sm { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+
+@media (max-width: 767px) {
+  .section-lg { padding-top: var(--space-12); padding-bottom: var(--space-12); }
+  .section-md { padding-top: var(--space-10); padding-bottom: var(--space-10); }
+  .section-sm { padding-top: var(--space-8);  padding-bottom: var(--space-8);  }
+}
+
+
+/* ── 5. BORDER RADIUS (utility aliases) ─────────────────────
+   Aliases so components use semantic names, not pixel values.
+   ─────────────────────────────────────────────────────────── */
+
+.rounded-card   { border-radius: var(--radius-lg); }
+.rounded-badge  { border-radius: var(--radius-full); }
+.rounded-input  { border-radius: var(--radius-sm); }
+.rounded-button { border-radius: var(--radius-sm); }
+
+
+/* ── 6. SHADOW SYSTEM (utility aliases) ─────────────────────
+   Named shadows — swap to change depth across the whole app.
+   ─────────────────────────────────────────────────────────── */
+
+.shadow-card   { box-shadow: var(--shadow-md); }
+.shadow-raised { box-shadow: var(--shadow-lg); }
+.shadow-float  { box-shadow: var(--shadow-xl); }
+.shadow-gold   { box-shadow: var(--shadow-gold); }
+
+
+/* ── 7. TRANSITIONS (utility aliases) ───────────────────────
+   Applied to interactive elements that don't already have a class.
+   ─────────────────────────────────────────────────────────── */
+
+.interactive {
+  transition: var(--transition-base);
+  cursor: pointer;
+}
+
+.interactive:hover {
+  transform: translateY(-2px);
+}
+
+.interactive:active {
+  transform: translateY(0) scale(0.99);
+}
+
+
+/* ── 8. ANIMATIONS (@keyframes) ─────────────────────────────
+   Keyframe definitions only.
+   No selectors here — applied by components.
+   ─────────────────────────────────────────────────────────── */
+
+@keyframes lm-fadeIn {
+  from { opacity: 0; transform: translateY(12px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lm-fadeInOnly {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes lm-fadeInDown {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes lm-slideUp {
+  from { transform: translateY(100%); }
+  to   { transform: translateY(0); }
+}
+
+@keyframes lm-scaleIn {
+  from { opacity: 0; transform: scale(0.94); }
+  to   { opacity: 1; transform: scale(1); }
+}
+
+@keyframes lm-spin {
+  to { transform: rotate(360deg); }
+}
+
+@keyframes lm-pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.5; }
+}
+
+@keyframes lm-shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
+
+@keyframes lm-successPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(16, 185, 129, .45); }
+  70%  { box-shadow: 0 0 0 10px rgba(16, 185, 129, 0); }
+  100% { box-shadow: 0 0 0 0 rgba(16, 185, 129, 0); }
+}
+
+@keyframes lm-shake {
+  0%, 100% { transform: translateX(0);    }
+  15%       { transform: translateX(-5px); }
+  30%       { transform: translateX(5px);  }
+  45%       { transform: translateX(-3px); }
+  60%       { transform: translateX(3px);  }
+  75%       { transform: translateX(-1px); }
+  90%       { transform: translateX(1px);  }
+}
+
+/* Animation helper classes */
+.lm-animate-fade-in   { animation: lm-fadeIn    var(--duration-slow) var(--ease-out) both; }
+.lm-animate-scale-in  { animation: lm-scaleIn   var(--duration-normal) var(--ease-spring) both; }
+.lm-animate-slide-up  { animation: lm-slideUp   var(--duration-slow) var(--ease-out) both; }
+
+
+/* ── 9. CONTAINERS ───────────────────────────────────────────
+   Thin overrides on Bootstrap containers.
+   Keeps max-widths consistent across pages.
+   ─────────────────────────────────────────────────────────── */
+
+/* Tighten horizontal padding on small phones */
+@media (max-width: 575px) {
+  .container,
+  .container-fluid {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+}
+
+/* Root and page wrapper — column layout only, no flex magic */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Page transition wrapper — animation only, no flex override */
+.lm-page-enter {
+  animation: lm-fadeIn var(--duration-slow) var(--ease-out) both;
+  flex: 1;
+}
+
+
+/* ── 10. UTILITY CLASSES ─────────────────────────────────────
+   Pure utilities that don't belong in a component.
+   Every class has exactly one job.
+   ─────────────────────────────────────────────────────────── */
+
+/* Text colour shortcuts */
+.text-gold    { color: var(--gold-500) !important; }
+.text-gold-3  { color: var(--gold-300) !important; }
+.text-navy    { color: var(--navy-800) !important; }
+.text-muted   { color: var(--color-text-muted) !important; }
+
+/* Background shortcuts */
+.bg-navy      { background-color: var(--navy-800) !important; }
+.bg-navy-9    { background-color: var(--navy-900) !important; }
+.bg-gold-100  { background-color: var(--gold-100) !important; }
+
+/* Gold accent bar — used below headings */
+.lm-gold-bar {
+  width: 48px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--gold-500), var(--gold-300));
+  border-radius: var(--radius-full);
+  margin-bottom: var(--space-3);
+}
+
+.lm-gold-bar--center {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Overflow helpers */
+.overflow-x-auto {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Word break for long strings in cards */
+.break-word {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Truncate single line */
+.truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* Visually hidden (accessible) */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Skeleton loader */
+.lm-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--gray-100) 25%,
+    var(--gray-50)  50%,
+    var(--gray-100) 75%
+  );
+  background-size: 200% 100%;
+  animation: lm-shimmer 1.4s ease-in-out infinite;
+  border-radius: var(--radius-sm);
+}
+
+/* Spinner */
+.lm-spinner {
+  display: inline-block;
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(201, 168, 76, .2);
+  border-top-color: var(--gold-500);
+  border-radius: var(--radius-full);
+  animation: lm-spin 0.7s linear infinite;
+}
+
+.lm-spinner--sm {
+  width: 20px;
+  height: 20px;
+  border-width: 2px;
+}
+
+
+/* ── 11. SCROLLBAR ───────────────────────────────────────────
+   Custom scrollbar — applied only to overflow containers.
+   Uses thin gold-tinted style; falls back to system on iOS.
+   ─────────────────────────────────────────────────────────── */
+
+/* Firefox */
+* {
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201, 168, 76, .35) transparent;
+}
+
+/* Chrome / Safari / Edge */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: rgba(201, 168, 76, .35);
+  border-radius: var(--radius-full);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: rgba(201, 168, 76, .55);
+}
+
+
+/* ── 12. SELECTION ───────────────────────────────────────────
+   Brand-coloured text selection.
+   ─────────────────────────────────────────────────────────── */
+
+::selection {
+  background-color: rgba(201, 168, 76, .28);
+  color: var(--navy-800);
+}
+
+::-moz-selection {
+  background-color: rgba(201, 168, 76, .28);
+  color: var(--navy-800);
+}
+
+
+/* ── 13. ACCESSIBILITY ───────────────────────────────────────
+   WCAG AA compliant focus indicators.
+   :focus-visible ensures mouse users never see the ring
+   but keyboard users always do.
+   ─────────────────────────────────────────────────────────── */
+
+/* Remove default outline for mouse users */
+:focus:not(:focus-visible) {
+  outline: none;
+}
+
+/* Gold focus ring for keyboard users */
+:focus-visible {
+  outline: 2px solid var(--gold-500);
+  outline-offset: 3px;
+  border-radius: 3px;
+}
+
+/* Larger touch targets on mobile */
+@media (max-width: 767px) {
+  button,
+  [role="button"],
+  a,
+  input,
+  select,
+  textarea {
+    min-height: 44px; /* WCAG 2.5.5 minimum touch target */
+  }
+
+  /* Exception: inline links don't need 44px height */
+  p a,
+  li a,
+  .lm-profile-menu__item {
+    min-height: unset;
+  }
+}
+
+/* High contrast mode support */
+@media (forced-colors: active) {
+  .lm-gold-bar {
+    background: Highlight;
+  }
+}
+
+
+/* ── 14. REDUCED MOTION ──────────────────────────────────────
+   Respect user OS preference.
+   Disables all transitions and animations.
+   Components that rely on motion for UX must have static fallbacks.
+   ─────────────────────────────────────────────────────────── */
+
+@media (prefers-reduced-motion: reduce) {
+
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  /* Static fallback for elements that use transform for layout */
+  .interactive:hover,
+  .interactive:active {
+    transform: none;
+  }
+
+  /* Skeleton stays visible but static */
+  .lm-skeleton {
+    animation: none;
+    background: var(--gray-100);
+  }
+}

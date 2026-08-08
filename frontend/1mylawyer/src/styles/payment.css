@@ -1,0 +1,73 @@
+.payment-page-container {
+    max-width: 1200px;
+}
+
+.payment-summary-card {
+    border: 1px solid var(--gold-400);
+    background-color: var(--navy-800);
+    color: white;
+    transition: transform 0.2s;
+}
+
+.payment-summary-card:hover {
+    transform: translateY(-5px);
+}
+
+.payment-summary-card .card-title {
+    color: var(--gold-300);
+}
+
+.payment-summary-card .card-text {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.card-header {
+    background-color: var(--navy-700);
+    color: var(--gold-300);
+    border-bottom: 1px solid var(--gold-500);
+}
+
+.btn-gold {
+    background-color: var(--gold-500);
+    color: var(--navy-900);
+    border: none;
+    font-weight: bold;
+}
+
+.btn-gold:hover {
+    background-color: var(--gold-600);
+    color: var(--navy-900);
+}
+
+.list-group-item.active {
+    background-color: var(--gold-500);
+    border-color: var(--gold-500);
+    color: var(--navy-900);
+}
+
+@media print {
+    body * {
+        visibility: hidden;
+    }
+
+    #invoice-page, #invoice-page * {
+        visibility: visible;
+    }
+
+    #invoice-page {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 100%;
+    }
+
+    .print-hide {
+        display: none;
+    }
+
+    #invoice-page .card {
+        box-shadow: none !important;
+        border: none !important;
+    }
+}

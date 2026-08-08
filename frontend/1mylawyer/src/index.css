@@ -1,0 +1,2494 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700;800&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ── CSS Custom Properties (Design Tokens) ─────────────────── */
+:root {
+  --navbar-height: 80px;
+  --navy-900: #060e1e;
+  --navy-800: #0a1628;
+  --navy-700: #0d1f3c;
+  --navy-600: #1a3a5c;
+  --navy-500: #1e4976;
+  --navy-400: #2563a8;
+
+  --gold-600: #a07830;
+  --gold-500: #c9a84c;
+  --gold-400: #d4af37;
+  --gold-300: #e8c96d;
+  --gold-100: #fdf8ec;
+
+  --gray-50:  #f8f9fc;
+  --gray-100: #f1f3f7;
+  --gray-200: #e2e6ed;
+  --gray-300: #cbd0db;
+  --gray-500: #6b7280;
+  --gray-700: #374151;
+  --gray-900: #111827;
+
+  --white: #ffffff;
+
+  --font-serif: 'Playfair Display', Georgia, serif;
+  --font-sans:  'Inter', -apple-system, sans-serif;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+  --shadow-md: 0 4px 16px rgba(6,14,30,.10);
+  --shadow-lg: 0 10px 40px rgba(6,14,30,.15), 0 4px 12px rgba(6,14,30,.10);
+  --shadow-xl: 0 20px 60px rgba(6,14,30,.20);
+  --shadow-gold: 0 4px 20px rgba(201,168,76,.25);
+
+  --radius-sm:  6px;
+  --radius-md: 12px;
+  --radius-lg: 18px;
+  --radius-xl: 24px;
+
+  --transition: all .25s cubic-bezier(.4,0,.2,1);
+}
+
+
+
+/* ── Base Reset ─────────────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; }
+
+html { scroll-behavior: smooth; }
+
+
+
+body {
+  font-family: var(--font-sans);
+  
+  background-color: var(--gray-50);
+  color: var(--gray-900);
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Typography ─────────────────────────────────────────────── */
+h1, h2, h3, .font-serif { font-family: var(--font-serif); }
+
+.lm-display {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  line-height: 1.15;
+  letter-spacing: -.02em;
+}
+
+.lm-heading {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  letter-spacing: -.01em;
+}
+
+.lm-section-title {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--navy-800);
+  margin-bottom: .5rem;
+}
+
+.lm-section-subtitle {
+  color: var(--gray-500);
+  font-size: 1.05rem;
+  max-width: 560px;
+  margin: 0 auto;
+}
+
+.text-gold  { color: var(--gold-500) !important; }
+.text-navy  { color: var(--navy-800) !important; }
+.bg-navy    { background-color: var(--navy-800) !important; }
+.bg-navy-dark { background-color: var(--navy-900) !important; }
+.bg-gold    { background-color: var(--gold-500) !important; }
+.bg-gold-light { background-color: var(--gold-100) !important; }
+
+/* ── Buttons ────────────────────────────────────────────────── */
+.btn-gold {
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-500));
+  border: none;
+  color: var(--navy-800);
+  font-weight: 600;
+  padding: .6rem 1.6rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  letter-spacing: .02em;
+  text-transform: uppercase;
+  font-size: .85rem;
+  box-shadow: var(--shadow-gold);
+}
+.btn-gold:hover {
+  background: linear-gradient(135deg, var(--gold-300), var(--gold-400));
+  color: var(--navy-900);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(201,168,76,.40);
+}
+
+.btn-navy {
+  background: linear-gradient(135deg, var(--navy-700), var(--navy-800));
+  border: none;
+  color: var(--white);
+  font-weight: 600;
+  padding: .6rem 1.6rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  letter-spacing: .02em;
+}
+.btn-navy:hover {
+  background: linear-gradient(135deg, var(--navy-600), var(--navy-700));
+  color: var(--white);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.btn-outline-gold {
+  background: transparent;
+  border: 2px solid var(--gold-500);
+  color: var(--gold-500);
+  font-weight: 600;
+  padding: .55rem 1.5rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+  letter-spacing: .02em;
+}
+.btn-outline-gold:hover {
+  background: var(--gold-500);
+  color: var(--navy-800);
+  transform: translateY(-2px);
+}
+
+.btn-outline-white {
+  background: transparent;
+  border: 2px solid rgba(255,255,255,.7);
+  color: var(--white);
+  font-weight: 600;
+  padding: .55rem 1.5rem;
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
+}
+.btn-outline-white:hover {
+  background: rgba(255,255,255,.12);
+  border-color: var(--white);
+  color: var(--white);
+}
+
+/* ── Cards ──────────────────────────────────────────────────── */
+.lm-card {
+  background: var(--white);
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  transition: var(--transition);
+  overflow: hidden;
+  
+  
+}
+.lm-card:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.lm-card-header {
+  background: var(--white);
+  border-bottom: 1px solid var(--gray-200);
+  padding: 1.25rem 1.75rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.lm-card-title {
+  font-family: var(--font-serif);
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--navy-800);
+  margin: 0;
+}
+
+/* ── Stat Cards ─────────────────────────────────────────────── */
+.lm-stat-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 1.75rem 1.5rem;
+  padding-top:2px;
+  padding-bottom:20px;
+  margin-top:2px;
+  text-align: center;
+  border-top: 1px solid var(--gold-500);
+  transition: var(--transition);
+  text-decoration: none;
+  display: block;
+  color: inherit;
+}
+.lm-stat-card:hover {
+  transform: translate(-2px);
+  transition: all .3s ease;
+  box-shadow: var(--shadow-lg);
+  color: inherit;
+  text-decoration: none;
+}
+.lm-stat-number {
+  font-family: var(--font-serif);
+  font-size: 2.4rem;
+  font-weight: 800;
+  color: var(--navy-800);
+  line-height: 1;
+  margin-bottom: .25rem;
+}
+.lm-stat-number.gold { color: var(--gold-500); }
+.lm-stat-icon {
+  width: 52px; height: 52px;
+  background: var(--gold-100);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.4rem;
+  margin: 0 auto .75rem;
+}
+.lm-stat-label {
+  font-size: .85rem;
+  font-weight: 600;
+  color: var(--gray-500);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+/* ── Page Header ─────────────────────────────────────────────── */
+.lm-page-header {
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 60%, var(--navy-600) 100%);
+  color: var(--white);
+  padding: 3rem 0;
+  position: relative;
+  overflow: hidden;
+}
+.lm-page-header::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.025'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E") repeat;
+}
+.lm-page-header-content { position: relative; z-index: 1; }
+.lm-page-header h1,
+.lm-page-header h2 { font-family: var(--font-serif); font-weight: 800; margin-bottom: .5rem; }
+.lm-page-header p   { color: rgba(255,255,255,.75); margin-bottom: 0; }
+.lm-gold-bar {
+  width: 48px; height: 3px;
+  background: var(--gold-500);
+  border-radius: 2px;
+  margin-bottom: 1rem;
+}
+
+/* ── Forms ──────────────────────────────────────────────────── */
+.lm-form .form-control,
+.lm-form .form-select {
+  border: 1.5px solid var(--gray-200);
+  border-radius: var(--radius-sm);
+  padding: .65rem 1rem;
+  font-size: .95rem;
+  transition: var(--transition);
+  background: var(--white);
+}
+.lm-form .form-control:focus,
+.lm-form .form-select:focus {
+  border-color: var(--gold-500);
+  box-shadow: none !important ;              /*0 0 0 3px rgba(201,168,76,.18);*/
+  outline: none !important;
+}
+.lm-form .form-label {
+  font-weight: 600;
+  font-size: .85rem;
+  text-transform: uppercase;
+  letter-spacing: .05em;
+  color: var(--navy-700);
+  margin-bottom: .4rem;
+}
+
+
+
+
+/* ── Divider ─────────────────────────────────────────────────── */
+.lm-profile-menu__divider {
+  height: 1px;
+  background: rgba(255,255,255,.08);
+  margin: 0;
+}
+
+/* ── Item list — scrollable middle section ───────────────────── */
+.lm-profile-menu__list {
+  list-style: none;
+  margin: 0;
+  padding: 8px;
+  overflow-y: auto;        /* scroll when items overflow        */
+  flex: 1 1 auto;          /* grow to fill space, shrink when needed */
+  /* custom scrollbar — thin gold tint */
+  scrollbar-width: thin;
+  scrollbar-color: rgba(201,168,76,.3) transparent;
+}
+.lm-profile-menu__list::-webkit-scrollbar { width: 4px; }
+.lm-profile-menu__list::-webkit-scrollbar-track { background: transparent; }
+.lm-profile-menu__list::-webkit-scrollbar-thumb {
+  background: rgba(201,168,76,.3);
+  border-radius: 4px;
+}
+
+/* ── Footer (Logout) — pinned at bottom ─────────────────────── */
+.lm-profile-menu__footer {
+  padding: 8px;
+  flex-shrink: 0;          /* never compress — always fully visible */
+  border-top: 1px solid rgba(255,255,255,.08);
+}
+
+/* ── Single menu item ────────────────────────────────────────── */
+.lm-profile-menu__item {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  width: 100%;
+  padding: 9px 12px;
+  border-radius: 10px;
+  font-size: .875rem;
+  font-weight: 500;
+  color: rgba(255,255,255,.82);
+  text-decoration: none;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition:
+    background .18s ease,
+    color      .18s ease,
+    transform  .15s ease;
+  position: relative;
+  text-align: left;
+  line-height: 1.4;
+}
+.lm-profile-menu__item:hover {
+  background: rgba(201,168,76,.12);
+  color: var(--gold-300);
+  transform: translateX(2px);
+  text-decoration: none;
+}
+.lm-profile-menu__item:active {
+  transform: translateX(1px) scale(.99);
+}
+
+/* active page — gold highlight */
+.lm-profile-menu__item--active {
+  background: linear-gradient(135deg,rgba(201,168,76,.22),rgba(201,168,76,.10));
+  color: var(--gold-300) !important;
+  font-weight: 600;
+}
+.lm-profile-menu__item--active:hover {
+  background: linear-gradient(135deg,rgba(201,168,76,.30),rgba(201,168,76,.18));
+}
+
+/* logout item */
+.lm-profile-menu__item--logout {
+  color: #fca5a5;
+}
+.lm-profile-menu__item--logout:hover {
+  background: rgba(239,68,68,.12);
+  color: #f87171;
+}
+
+/* icon cell */
+.lm-profile-menu__icon {
+  font-size: 1rem;
+  width: 22px;
+  text-align: center;
+  flex-shrink: 0;
+  line-height: 1;
+}
+
+/* label */
+.lm-profile-menu__label { flex: 1; }
+
+/* active-page dot */
+.lm-profile-menu__dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: var(--gold-500);
+  box-shadow: 0 0 6px rgba(201,168,76,.6);
+  flex-shrink: 0;
+}
+
+/* ── Responsive ──────────────────────────────────────────────── */
+@media (max-width: 991px) {
+  .lm-profile-dropdown-wrap { width: 100%; }
+  .lm-profile-menu {
+    right: 0; left: 0; width: auto;
+    max-width: calc(100vw - 24px); margin: 0 auto;
+    top: calc(100% + 12px); max-height: 65vh;
+    border-radius: 14px;
+    transform: translateY(-10px) scale(.97);
+  }
+  .lm-profile-menu--open { transform: translateY(0) scale(1); }
+  .lm-profile-menu--upward { top: auto; bottom: calc(100% + 12px); transform: translateY(10px) scale(.97); }
+  .lm-profile-menu--upward.lm-profile-menu--open { transform: translateY(0) scale(1); }
+  .lm-profile-menu::before { display: none; }
+  /* User dropdown button full width in collapsed mobile navbar */
+  .lm-navbar .navbar-collapse .lm-profile-dropdown-wrap { width: 100%; }
+  .lm-navbar .navbar-collapse .lm-user-btn { width: 100%; justify-content: center; }
+}
+
+
+/* ── Badges ─────────────────────────────────────────────────── */
+.badge-gold {
+  background: linear-gradient(135deg, var(--gold-600), var(--gold-500));
+  color: var(--navy-900);
+  font-weight: 700;
+  padding: .3rem .75rem;
+  border-radius: 30px;
+  font-size: .78rem;
+  letter-spacing: .04em;
+}
+.badge-navy {
+  background: var(--navy-700);
+  color: var(--white);
+  font-weight: 600;
+  padding: .3rem .75rem;
+  border-radius: 30px;
+  font-size: .78rem;
+}
+
+/* ── Sidebar Nav ─────────────────────────────────────────────── */
+.lm-sidebar-nav { list-style: none; padding: 0; margin: 0; }
+.lm-sidebar-nav .nav-item { margin-bottom: .25rem; }
+.lm-sidebar-nav .nav-navbar {
+  display: flex; align-items: center; gap: .65rem;
+  padding: .75rem 1.1rem;
+  border-radius: var(--radius-md);
+  color: var(--gray-700);
+  font-weight: 500;
+  font-size: .9rem;
+  transition: var(--transition);
+  text-decoration: none;
+}
+.lm-sidebar-nav .nav-link:hover {
+  background: var(--gold-100);
+  color: var(--navy-800);
+}
+.lm-sidebar-nav .nav-link.active {
+  background: linear-gradient(135deg, var(--navy-800), var(--navy-700));
+  color: var(--white);
+  box-shadow: var(--shadow-md);
+}
+.lm-sidebar-nav .nav-link.active .nav-icon { color: var(--gold-500); }
+
+/* ── Tables ─────────────────────────────────────────────────── */
+.lm-table { width: 100%; border-collapse: collapse; }
+.lm-table thead tr {
+  background: var(--navy-800);
+  color: var(--white);
+}
+.lm-table thead th {
+  padding: .85rem 1.1rem;
+  font-size: .78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  border: none;
+  color: rgba(255,255,255,.9);
+}
+.lm-table thead th:first-child { border-radius: var(--radius-sm) 0 0 0; }
+.lm-table thead th:last-child  { border-radius: 0 var(--radius-sm) 0 0; }
+.lm-table tbody tr {
+  border-bottom: 1px solid var(--gray-100);
+  transition: var(--transition);
+}
+.lm-table tbody tr:hover { background: var(--gold-100); }
+.lm-table tbody td {
+  padding: .85rem 1.1rem;
+  font-size: .9rem;
+  color: var(--gray-700);
+  vertical-align: middle;
+}
+
+/* ── Advocate Card ──────────────────────────────────────────── */
+.lm-advocate-card {
+  background: #fff;
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  border: 1px solid var(--gray-200);
+  transition: var(--transition);
+  overflow: hidden;
+  height: 100%;
+  display: flex; flex-direction: column;
+  width:200%;
+  max-width:380px;
+}
+.lm-advocate-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-xl);
+  border-color: var(--gold-300);
+}
+
+.lm-advocate-header{
+
+    background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
+    padding: 1.5rem 1.25rem 1rem;
+    position: relative;
+    min-height: 135px;
+}
+
+.lm-advocate-body{
+    padding:1.25rem;
+    display:flex;
+    flex-direction:column;
+    flex:1;
+}
+
+
+
+.lm-status{
+    position:absolute;
+    top:16px;
+    right:16px;
+    padding:6px 12px;
+    border-radius:50px;
+    font-size:11px;
+    font-weight:700;
+}
+
+
+
+
+
+
+.lm-advocate-avatar {
+  width: 56px; height: 56px;
+  background: linear-gradient(135deg, var(--navy-700), var(--navy-500));
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-family: var(--font-serif);
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: var(--white);
+  border: 3px solid var(--gold-500);
+  flex-shrink: 0;
+}
+.lm-advocate-fee {
+  display: inline-block;
+  background: linear-gradient(135deg, var(--gold-600), var(--gold-500));
+  color: var(--navy-900);
+  font-weight: 800;
+  font-size: .9rem;
+  padding: .25rem .85rem;
+  border-radius: 30px;
+}
+
+.lm-advocate-actions .btn{
+    flex:1;
+    min-width:0;
+    height:46px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    font-size:.85rem;
+}
+
+
+
+/* ── Hero ────────────────────────────────────────────────────── */
+.lm-hero {
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-800) 55%, var(--navy-700) 100%);
+  min-height: 70vh;
+  padding-top:24px;
+  margin-bottom:20px;
+  display: flex; align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+/* Existing side glow — unchanged */
+.lm-hero::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,168,76,.07) 0%, transparent 70%);
+  pointer-events: none;
+}
+/* New: dark blue radial + soft gold glow centred behind the heading */
+.lm-hero::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -5%;
+  width: 60%;
+  height: 120%;
+  background:
+    radial-gradient(ellipse 55% 50% at 38% 46%, rgba(10, 26, 56, 0.82) 0%, transparent 70%),
+    radial-gradient(ellipse 35% 35% at 32% 44%, rgba(212, 175, 55, 0.09) 0%, transparent 65%);
+  pointer-events: none;
+  z-index: 0;
+}
+.lm-hero-eyebrow {
+  display: inline-flex; align-items: center; gap: .5rem;
+  background: rgba(201,168,76,.12);
+  border: 1px solid rgba(201,168,76,.3);
+  color: var(--gold-300);
+  font-size: .8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  padding: .35rem 1rem;
+  border-radius: 30px;
+  margin-bottom: 1.5rem;
+}
+.lm-hero-title {
+  font-family: var(--font-serif);
+  font-size: clamp(2.4rem, 5vw, 4rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.12;
+  letter-spacing: -.02em;
+  margin-bottom: 1.75rem;
+}
+.lm-hero-title .gold { color: var(--gold-400); }
+.lm-hero-subtitle {
+  color: rgba(255,255,255,.7);
+  font-size: 1.1rem;
+  line-height: 1.8;
+  margin-bottom: 3rem;
+  max-width: 560px;
+}
+.lm-hero-img {
+  border-radius:var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+
+  object-fit: cover;
+  border: 4px solid rgba(201,168,76,.3);
+  width: 100%;
+  max-height: 520px;
+}
+.lm-hero-stats {
+  display: flex; gap: 2rem;
+  padding-top: 25px;
+  border-top: 1px solid rgba(255,255,255,.12);
+  margin-top: 45px;
+}
+.lm-hero-stat-num {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  font-weight: 800;
+  color: var(--gold-400);
+  line-height: 1;
+}
+.lm-hero-stat-lbl {
+  font-size: .75rem;
+  color: rgba(255,255,255,.55);
+  text-transform: uppercase;
+  letter-spacing: .06em;
+}
+
+.hero-content{
+  padding-left:10px;
+}
+
+.btn{
+  padding:16px 34px;
+  font-weight:700;
+  font-size:20px;
+  
+}
+
+/* ── Footer ─────────────────────────────────────────────────── */
+.lm-footer {
+  background: linear-gradient(180deg, var(--navy-900) 0%, #030810 100%);
+  color: rgba(255,255,255,.75);
+  padding: 4rem 0 0;
+}
+.lm-footer-brand {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--white);
+}
+.lm-footer-brand .accent { color: var(--gold-500); }
+.lm-footer-tagline {
+  font-size: .88rem;
+  color: rgba(255,255,255,.5);
+  margin-top: .4rem;
+}
+.lm-footer h6 {
+  font-size: .75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .1em;
+  color: var(--gold-500);
+  margin-bottom: 1.1rem;
+}
+.lm-footer-links { list-style: none; padding: 0; margin: 0; }
+.lm-footer-links li { margin-bottom: .55rem; }
+.lm-footer-links a {
+  color: rgba(255,255,255,.6);
+  font-size: .88rem;
+  text-decoration: none;
+  transition: var(--transition);
+}
+.lm-footer-links a:hover { color: var(--gold-400); }
+.lm-footer-contact-item {
+  display: flex; gap: .75rem; align-items: flex-start;
+  color: rgba(255,255,255,.6); font-size: .88rem;
+  margin-bottom: .75rem;
+}
+.lm-footer-contact-item .icon { color: var(--gold-500); font-size: .9rem; flex-shrink: 0; margin-top: .1rem; }
+.lm-footer-bottom {
+  border-top: 1px solid rgba(255,255,255,.08);
+  padding: 1.25rem 0;
+  margin-top: 3rem;
+  text-align: center;
+  font-size: .82rem;
+  color: rgba(255,255,255,.35);
+}
+.lm-footer-bottom span { color: var(--gold-500); }
+
+/* ── Testimonial Cards ──────────────────────────────────────── */
+.lm-testimonial {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  border-left: 4px solid var(--gold-500);
+  transition: var(--transition);
+  height: 100%;
+}
+.lm-testimonial:hover {
+  transform: translateY(-4px);
+  box-shadow: var(--shadow-lg);
+}
+.lm-testimonial-quote {
+  font-size: 3rem;
+  color: var(--gold-300);
+  line-height: 1;
+  font-family: Georgia, serif;
+  margin-bottom: .5rem;
+}
+.lm-testimonial-text {
+  font-size: .95rem;
+  color: var(--gray-700);
+  line-height: 1.7;
+  font-style: italic;
+}
+.lm-star-gold { color: var(--gold-500); font-size: .95rem; letter-spacing: .05em; }
+
+/* ── FAQ Accordion ──────────────────────────────────────────── */
+.lm-accordion .accordion-item {
+  border: 1px solid var(--gray-200);
+  border-radius: var(--radius-md) !important;
+  margin-bottom: .75rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+.lm-accordion .accordion-button {
+  background: var(--white);
+  color: var(--navy-800);
+  font-weight: 600;
+  font-size: .95rem;
+  padding: 1.1rem 1.4rem;
+}
+.lm-accordion .accordion-button:not(.collapsed) {
+  background: var(--navy-800);
+  color: var(--white);
+  box-shadow: none;
+}
+.lm-accordion .accordion-button::after {
+  filter: none;
+}
+.lm-accordion .accordion-button:not(.collapsed)::after { filter: invert(1); }
+.lm-accordion .accordion-button:focus { box-shadow: 0 0 0 3px rgba(201,168,76,.2); }
+.lm-accordion .accordion-body {
+  background: var(--gray-50);
+  color: var(--gray-700);
+  font-size: .93rem;
+  line-height: 1.7;
+  padding: 1.1rem 1.4rem;
+  border-top: 1px solid var(--gold-100);
+}
+
+/* ── Service Cards ──────────────────────────────────────────── */
+.lm-service-card {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-md);
+  padding: 2rem;
+  text-align: center;
+  border-bottom: 3px solid transparent;
+  transition: var(--transition);
+  height: 100%;
+}
+.lm-service-card:hover {
+  transform: translateY(-6px);
+  box-shadow: var(--shadow-lg);
+  border-bottom-color: var(--gold-500);
+}
+.lm-service-icon {
+  width: 72px; height: 72px;
+  background: linear-gradient(135deg, var(--gold-100), #fff8e8);
+  border-radius: 50%;
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1.8rem;
+  margin: 0 auto 1.25rem;
+  border: 2px solid var(--gold-300);
+}
+.lm-service-card h5 {
+  font-family: var(--font-serif);
+  font-weight: 700;
+  color: var(--navy-800);
+  margin-bottom: .6rem;
+}
+.lm-service-card p { font-size: .9rem; color: var(--gray-500); margin: 0; }
+
+/* ── Auth Pages ─────────────────────────────────────────────── */
+.lm-auth-page {
+  min-height: 100vh;
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
+  display: flex; align-items: center;
+}
+.lm-auth-brand {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-weight: 800;
+  color: var(--white);
+  margin-bottom: .5rem;
+}
+.lm-auth-card {
+  background: var(--white);
+  border-radius: var(--radius-xl);
+  box-shadow: var(--shadow-xl);
+  padding: 2.5rem;
+}
+
+/* ── Animations ─────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(24px); }
+  to   { opacity: 1; transform: translateY(0);  }
+}
+.lm-fade-in { animation: fadeInUp .6s ease both; }
+.lm-fade-in-delay-1 { animation: fadeInUp .6s .15s ease both; }
+.lm-fade-in-delay-2 { animation: fadeInUp .6s .3s ease both; }
+.lm-fade-in-delay-3 { animation: fadeInUp .6s .45s ease both; }
+
+/* ── Misc ────────────────────────────────────────────────────── */
+.lm-divider {
+  height: 1px; background: var(--gray-200); border: none; margin: 2rem 0;
+}
+.lm-divider-gold {
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--gold-400), transparent);
+  border: none; margin: 0;
+}
+.lm-empty-state {
+  text-align: center; padding: 4rem 1.5rem;
+}
+.lm-empty-state .icon { font-size: 3.5rem; margin-bottom: 1rem; }
+.lm-empty-state h5 { font-family: var(--font-serif); color: var(--navy-800); font-size: 1.25rem; }
+.lm-empty-state p  { color: var(--gray-500); font-size: .93rem; }
+
+::-webkit-scrollbar { width: 6px; }
+::-webkit-scrollbar-track { background: var(--gray-100); }
+::-webkit-scrollbar-thumb { background: var(--navy-500); border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: var(--gold-500); }
+
+/* ── Bootstrap Overrides ────────────────────────────────────── */
+.btn-primary { background-color: var(--navy-700); border-color: var(--navy-700); }
+.btn-primary:hover, .btn-primary:focus { background-color: var(--navy-600); border-color: var(--navy-600); }
+.form-control:focus, .form-select:focus {
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 3px rgba(201,168,76,.18);
+}
+.spinner-border.text-gold { color: var(--gold-500) !important; }
+
+/* ============================================================
+   RESPONSIVE BREAKPOINTS
+   Mobile-first: base styles apply to all, then override up
+   ============================================================
+
+   Bootstrap breakpoints used throughout this project:
+     xs:  0–575px     (phones portrait)
+     sm:  576–767px   (phones landscape / small tablets)
+     md:  768–991px   (tablets)
+     lg:  992–1199px  (laptops)
+     xl:  1200px+     (desktops / large screens)
+
+   Strategy per component:
+   - Hero        → min-height auto on mobile, hide floating badges < md
+   - Page Header → reduce padding and font sizes on mobile
+   - Stat Cards  → 2-col grid on mobile (col-6), 4-col on desktop
+   - Auth Pages  → full-width card on mobile, no left panel < lg
+   - Sidebar     → hidden on mobile, horizontal tab strip instead
+   - Tables      → horizontal scroll + min-width, hide non-essential cols
+   - Buttons     → full-width on mobile where stacked
+   - Hero Stats  → 2×2 grid on mobile instead of 1×4 row
+   - Cards       → no hover transform on touch (prevents sticky state)
+   ============================================================ */
+
+/* ──────────────────────────────────────────────────────────
+   1. GLOBAL MOBILE RESET
+   ────────────────────────────────────────────────────────── */
+@media (max-width: 575px) {
+  /* Prevent any element from causing horizontal overflow */
+  body { overflow-x: hidden; }
+
+  /* Container padding */
+  .container { padding-left: 1rem; padding-right: 1rem; }
+
+  /* Reduce section padding globally on phones */
+  section { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   2. NAVBAR — Mobile collapse fix*/
+
+   /* ──────────────────────────────────────────
+   2. NAVBAR — Mobile collapse fix
+────────────────────────────────────────── */
+
+@media (max-width: 991px) {
+
+  .lm-navbar .navbar-collapse {
+    background: var(--navy-800);
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding: 1rem;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    margin-top: .25rem;
+  }
+
+  .lm-navbar .navbar-nav {
+    margin: 0 !important;
+    gap: .15rem !important;
+    width: 100%;
+  }
+
+  .lm-navbar .nav-link {
+    padding: .65rem 1rem !important;
+    border-radius: var(--radius-sm);
+  }
+
+  .lm-navbar .navbar-collapse .d-flex {
+    margin-top: .75rem;
+    padding-top: .75rem;
+    border-top: 1px solid rgba(255,255,255,.08);
+    flex-wrap: wrap;
+    gap: .5rem !important;
+  }
+
+  .lm-navbar .navbar-collapse > .d-flex > .btn-outline-gold,
+  .lm-navbar .navbar-collapse > .d-flex > .btn-gold {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .lm-navbar .navbar-collapse .lm-profile-dropdown-wrap {
+    width: 100%;
+  }
+
+  .lm-navbar .navbar-collapse .lm-user-btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+  
+
+  .lm-navbar .nav-link {
+    padding: .65rem 1rem !important;
+    border-radius: var(--radius-sm);
+  }
+
+  /* Auth buttons sit below nav links with top margin */
+  .lm-navbar .navbar-collapse > .d-flex {
+    margin-top: .75rem;
+    padding-top: .75rem;
+    border-top: 1px solid rgba(255,255,255,.08);
+    flex-wrap: wrap;
+    gap: .5rem !important;
+  }
+
+  /* Full-width auth buttons on mobile */
+  .lm-navbar .navbar-collapse .btn-outline-gold,
+  .lm-navbar .navbar-collapse .btn-gold {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* User dropdown — full width in collapsed mobile navbar */
+  .lm-navbar .navbar-collapse .lm-profile-dropdown-wrap { width: 100%; }
+  .lm-navbar .navbar-collapse .lm-user-btn { width: 100%; justify-content: center; }
+
+
+/* ──────────────────────────────────────────────────────────
+   3. HERO SECTION — Mobile responsive
+   ────────────────────────────────────────────────────────── */
+
+/* Mobile: remove full-viewport height, add proper padding */
+@media (max-width: 767px){
+  .lm-hero {
+    min-height: auto !important;
+  }/* When collapsed, auth buttons stack below nav links with proper spacing */
+@media (max-width: 991px) {
+  /* The collapsed menu needs padding and background */
+  .lm-navbar .navbar-collapse {
+    background: var(--navy-800);
+    border-top: 1px solid rgba(255,255,255,.1);
+    padding: 1rem;
+    border-radius: 0 0 var(--radius-md) var(--radius-md);
+    margin-top: .25rem;
+  }
+}
+
+  /* Nav links full width in mobile menu */
+  .lm-navbar .navbar-nav {
+    margin: 0 !important;
+    padding: 3.5rem 0 2.5rem;
+  }
+
+  .lm-hero-title {
+    font-size: clamp(2rem, 8vw, 2.8rem) !important;
+  }
+
+  .lm-hero-subtitle {
+    font-size: .95rem !important;
+    max-width: 100%;
+    margin-bottom: 1.75rem !important;
+  }
+
+  /* Stack CTA buttons vertically and full width on phones */
+  .lm-hero .d-flex.gap-3.flex-wrap.mb-4 {
+    flex-direction: column;
+  }
+  .lm-hero .d-flex.gap-3.flex-wrap.mb-4 .btn {
+    width: 100%;
+    text-align: center;
+    justify-content: center;
+  }
+
+  /* Stats: 2 columns on mobile instead of 1 row of 4 */
+  .lm-hero-stats {
+    gap: 1rem !important;
+    flex-wrap: wrap;
+    display: grid !important;
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .lm-hero-stat-num { font-size: 1.3rem; }
+  .lm-hero-stat-lbl { font-size: .68rem; }
+
+  /* Hide floating badges on mobile — they overflow the viewport */
+  /* The badge positioned absolute at left:-20 and right:-20 clips content */
+  .lm-hero [style*="position: absolute"][style*="bottom: 28"],
+  .lm-hero [style*="position: absolute"][style*="top: 28"] {
+    display: none !important;
+  }
+
+  /* Gold ring decoration also causes overflow */
+  .lm-hero [style*="position: absolute"][style*="inset: -10"] {
+    display: none !important;
+  }
+
+  /* Image: remove negative margins, keep centered */
+  .lm-hero-img {
+    max-height: 320px !important;
+    margin-top: 2rem;
+  }
+
+  /* Eyebrow badge: smaller text on mobile */
+  .lm-hero-eyebrow {
+    font-size: .72rem !important;
+  }
+}
+
+/* Tablet: slightly reduce hero height */
+@media (min-width: 768px) and (max-width: 991px) {
+  .lm-hero {
+    min-height: 70vh !important;
+    padding: 3rem 0;
+  }
+
+  .lm-hero-img { max-height: 400px !important; }
+
+  /* Hide only the most overflowing badge (right one) on tablet */
+  .lm-hero [style*="position: absolute"][style*="top: 28"] {
+    display: none !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   4. PAGE HEADERS — Reduce padding on mobile
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 575px) {
+  .lm-page-header {
+    padding: 1.75rem 0 !important;
+  }
+
+  .lm-page-header h1 {
+    font-size: clamp(1.5rem, 6vw, 2rem) !important;
+    margin-bottom: .3rem !important;
+  }
+
+  .lm-page-header h2 {
+    font-size: clamp(1.3rem, 5vw, 1.8rem) !important;
+  }
+
+  /* Stack page header content on phones */
+  .lm-page-header-content.d-flex {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+    gap: 1rem !important;
+  }
+}
+
+@media (min-width: 576px) and (max-width: 767px) {
+  .lm-page-header { padding: 2rem 0 !important; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   5. STAT CARDS — Responsive number sizing
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 575px) {
+  /* 2-per-row stat cards: reduce font and padding */
+  .lm-stat-card {
+    padding: 1.25rem 1rem !important;
+  }
+
+  .lm-stat-number {
+    font-size: 1.8rem !important;
+  }
+
+  .lm-stat-label {
+    font-size: .72rem !important;
+  }
+
+  .lm-stat-icon {
+    width: 44px !important;
+    height: 44px !important;
+    font-size: 1.1rem !important;
+    margin-bottom: .5rem !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   6. CARDS — Disable transform hover on touch devices
+   (Hover states get "stuck" on mobile after tap)
+   ────────────────────────────────────────────────────────── */
+
+@media (hover: none) {
+  .lm-card:hover,
+  .lm-stat-card:hover,
+  .lm-advocate-card:hover,
+  .lm-service-card:hover,
+  .lm-testimonial:hover {
+    transform: none !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   7. FORMS — Full width on mobile
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 575px) {
+  .lm-form .form-control,
+  .lm-form .form-select {
+    font-size: 1rem; /* Prevent iOS zoom on focus (needs ≥ 16px, but 1rem = 16px) */
+  }
+
+  /* Ensure form button rows stack on phones */
+  .lm-form .d-flex:not(.d-sm-flex) {
+    flex-direction: column;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   8. AUTH PAGES — Full width card on mobile, no left panel
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .lm-auth-page { padding: 1.5rem 0; align-items: flex-start; }
+  .lm-auth-page .min-vh-100 { min-height: auto !important; }
+
+  /* The card itself: reduce padding on small screens */
+  .lm-auth-card {
+    padding: 1.75rem 1.25rem !important;
+    border-radius: var(--radius-lg) !important;
+  }
+
+  /* The split-screen card wrapper: no border-radius override */
+  .lm-auth-page .row.g-0 {
+    border-radius: var(--radius-lg) !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   9. TABLES — Horizontal scroll wrapper + min-width
+   ────────────────────────────────────────────────────────── */
+
+/* Ensure table wrapper always scrolls horizontally */
+.lm-table-responsive {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  border-radius: var(--radius-lg);
+}
+
+/* Minimum width so columns don't collapse to zero */
+.lm-table {
+  min-width: 600px;
+}
+
+/* On very small screens, reduce table cell padding */
+@media (max-width: 575px) {
+  .lm-table thead th,
+  .lm-table tbody td {
+    padding: .6rem .75rem !important;
+    font-size: .78rem !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   10. ADMIN SIDEBAR — Mobile: convert to top tab strip
+   ────────────────────────────────────────────────────────── */
+
+/* Sidebar visible by default on desktop */
+.lm-admin-sidebar {
+  width: 220px;
+  background: var(--white);
+  border-right: 1px solid var(--gray-100);
+  padding: 1.5rem .75rem;
+  flex-shrink: 0;
+}
+
+/* Tab strip for mobile — hidden on desktop */
+.lm-admin-tabs-mobile {
+  display: none;
+}
+
+@media (max-width: 991px) {
+  /* Hide the sidebar */
+  .lm-admin-sidebar {
+    display: none !important;
+  }
+
+  /* Show horizontal scrollable tab strip */
+  .lm-admin-tabs-mobile {
+    display: flex !important;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+    background: var(--white);
+    border-bottom: 2px solid var(--gray-100);
+    padding: 0 1rem;
+    gap: 0;
+    scrollbar-width: none;
+  }
+  .lm-admin-tabs-mobile::-webkit-scrollbar { display: none; }
+
+  .lm-admin-tab-btn {
+    white-space: nowrap;
+    background: none;
+    border: none;
+    padding: .85rem 1rem;
+    font-size: .82rem;
+    font-weight: 600;
+    color: var(--gray-500);
+    cursor: pointer;
+    border-bottom: 2px solid transparent;
+    margin-bottom: -2px;
+    transition: var(--transition);
+    display: flex;
+    align-items: center;
+    gap: .4rem;
+  }
+
+  .lm-admin-tab-btn.active {
+    color: var(--navy-800);
+    border-bottom-color: var(--gold-500);
+  }
+
+  /* Main content area takes full width when sidebar hidden */
+  .lm-admin-main {
+    padding: 1.25rem !important;
+  }
+  .lm-admin-main-content {
+    width: 100%;
+    padding: 0 !important;
+  }
+
+  /* Outer flex wrapper stacks vertically on mobile */
+  .lm-admin-layout {
+    flex-direction: column !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   11. SECTION TITLES — Responsive font sizes
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 575px) {
+  .lm-section-title {
+    font-size: 1.6rem !important;
+  }
+
+  .lm-section-subtitle {
+    font-size: .9rem !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   12. FOOTER — Stack columns on mobile
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  .lm-footer { padding-top: 2.5rem !important; }
+  .lm-footer-bottom { margin-top: 2rem !important; }
+}
+
+/* ──────────────────────────────────────────────────────────
+   13. BUTTONS — Touch-friendly minimum sizes
+   ────────────────────────────────────────────────────────── */
+
+/* Minimum 44×44px tap target (Apple HIG + WCAG 2.5.5) */
+@media (max-width: 767px) {
+  .btn-gold, .btn-navy, .btn-outline-gold, .btn-outline-white {
+    min-height: 44px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   14. ADVOCATE CARDS — Stacked on mobile
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 575px) {
+  /* Avatar slightly smaller */
+  .lm-advocate-avatar {
+    width: 48px !important;
+    height: 48px !important;
+    font-size: 1.1rem !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   15. PROFILE PAGE — Sidebar stacks above content on mobile
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 767px) {
+  /* Sidebar list becomes horizontal on mobile */
+  .lm-sidebar-nav {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: .5rem;
+    overflow-x: auto;
+    padding-bottom: .5rem;
+    scrollbar-width: none;
+  }
+  .lm-sidebar-nav::-webkit-scrollbar { display: none; }
+
+  .lm-sidebar-nav .nav-item { margin-bottom: 0 !important; flex-shrink: 0; }
+
+  .lm-sidebar-nav .nav-link {
+    padding: .6rem .9rem !important;
+    font-size: .82rem !important;
+    white-space: nowrap;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   16. MODALS — Full screen on mobile
+   ────────────────────────────────────────────────────────── */
+
+@media (max-width: 575px) {
+  /* Modals take full screen width on phones */
+  .modal-dialog { margin: .5rem !important; }
+
+  .modal-content {
+    border-radius: var(--radius-md) !important;
+  }
+}
+
+/* ──────────────────────────────────────────────────────────
+   17. MISC OVERFLOW PREVENTION
+   ────────────────────────────────────────────────────────── */
+
+/* Prevent any card from overflowing its column */
+.lm-card, .lm-advocate-card, .lm-stat-card {
+  max-width: 100%;
+}
+
+/* Images never overflow their container */
+img { max-width: 100%; height: auto; }
+
+/* Long words and URLs in cards don't break layout */
+.lm-card p, .lm-card h5, .lm-card h6 {
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+/* Empty states: reduce padding on mobile */
+@media (max-width: 575px) {
+  .lm-empty-state {
+    padding: 2.5rem 1rem !important;
+  }
+
+  .lm-empty-state .icon { font-size: 2.5rem !important; }
+}
+
+
+/* ============================================================
+   ANIMATION SYSTEM
+   Professional, subtle, purposeful.
+   Rule: every animation has a functional reason.
+   ============================================================ */
+
+/* ── 1. KEYFRAME DEFINITIONS ────────────────────────────────── */
+
+/* Page / section entrance */
+@keyframes lm-fadeIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0);   }
+}
+
+/* Fade only (no movement) — for overlays, modals */
+@keyframes lm-fadeInOnly {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* Success pulse — green ring expands and fades */
+@keyframes lm-successPulse {
+  0%   { box-shadow: 0 0 0 0 rgba(16,185,129,.45); }
+  70%  { box-shadow: 0 0 0 10px rgba(16,185,129,0); }
+  100% { box-shadow: 0 0 0 0 rgba(16,185,129,0);  }
+}
+
+/* Error shake — horizontal wiggle */
+@keyframes lm-shake {
+  0%, 100% { transform: translateX(0);    }
+  15%       { transform: translateX(-6px); }
+  30%       { transform: translateX(6px);  }
+  45%       { transform: translateX(-4px); }
+  60%       { transform: translateX(4px);  }
+  75%       { transform: translateX(-2px); }
+  90%       { transform: translateX(2px);  }
+}
+
+/* Notification badge pulse */
+@keyframes lm-badgePulse {
+  0%, 100% { transform: scale(1);    }
+  50%       { transform: scale(1.18); }
+}
+
+/* Skeleton shimmer */
+@keyframes lm-shimmer {
+  0%   { background-position: -400px 0; }
+  100% { background-position:  400px 0; }
+}
+
+/* Spin — for loading states */
+@keyframes lm-spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Subtle scale-in for cards entering the viewport */
+@keyframes lm-scaleIn {
+  from { opacity: 0; transform: scale(.97); }
+  to   { opacity: 1; transform: scale(1);   }
+}
+
+/* ── 2. PAGE TRANSITION ─────────────────────────────────────── */
+/*
+  Applied to the root route wrapper.
+  Gives a clean fade + slight upward motion when navigating.
+  Duration: 0.3s — fast enough to not feel sluggish.
+  Timing: ease-out — snappy start, gentle landing.
+*/
+
+/* Root container ko full height dene ke liye */
+#root {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Aapka purana animation aur naya stretch code */
+.lm-page-enter {
+  animation: lm-fadeIn .3s ease-out both; /* Aapka pehle wala animation code */
+  flex: 1; /* Ye sabse zaroori hai! Ye div ko poori white space me stretch kar dega */
+  display: flex;
+  flex-direction: column;
+}
+
+
+/* ── 3. BUTTON EFFECTS ──────────────────────────────────────── */
+/*
+  :active gives immediate tactile press feedback.
+  translateY(1px) simulates physical depression.
+  scale(.98) gives a slight squeeze effect.
+  No hover animation added — hover is handled by transform: translateY(-2px)
+  already defined on .btn-gold / .btn-navy.
+*/
+.btn-gold:active,
+.btn-navy:active,
+.btn-outline-gold:active,
+.btn-outline-white:active,
+.btn-primary:active {
+  transform: translateY(1px) scale(.98) !important;
+  box-shadow: none !important;
+  transition: transform .08s ease, box-shadow .08s ease !important;
+}
+
+/* Smooth transition on all buttons — ensures hover lift feels natural */
+.btn-gold, .btn-navy, .btn-outline-gold, .btn-outline-white {
+  transition: transform .2s ease, box-shadow .2s ease, background .2s ease !important;
+  will-change: transform;
+}
+
+/* ── 4. CARD HOVER ──────────────────────────────────────────── */
+/*
+  Existing .lm-card hover uses transition: var(--transition) which is .25s.
+  Adding will-change: transform so the GPU handles compositing.
+  This prevents jank on pages with many cards.
+*/
+.lm-card,
+.lm-advocate-card,
+.lm-service-card,
+.lm-stat-card,
+.lm-testimonial {
+  will-change: transform;
+}
+
+/*
+  Stat cards get a slightly different hover — scale instead of translate
+  because they sit in a tight grid and translateY would look cramped.
+*/
+.lm-stat-card:hover {
+  transform: translateY(-4px) scale(1.02) !important;
+}
+
+/* ── 5. FORM FIELD ANIMATIONS ───────────────────────────────── */
+/*
+  Smooth focus transition on all form inputs.
+  The border-color and box-shadow transitions are defined in global CSS
+  but adding a consistent duration here.
+*/
+.form-control,
+.form-select {
+  transition: border-color .2s ease, box-shadow .2s ease !important;
+}
+
+/* ── 6. SUCCESS STATE ANIMATION ─────────────────────────────── */
+/*
+  Applied programmatically via JS: element.classList.add('lm-success-state')
+  Creates a green pulse ring — confirms the action worked.
+  Used on: form submit buttons, check icons, success containers.
+*/
+.lm-success-state {
+  animation: lm-successPulse .6s ease-out;
+}
+
+/* ── 7. ERROR STATE ANIMATION ───────────────────────────────── */
+/*
+  Applied programmatically via JS: element.classList.add('lm-error-state')
+  Horizontal shake — mimics physical "no" gesture.
+  Used on: form cards when submission fails, input groups.
+*/
+.lm-error-state {
+  animation: lm-shake .4s ease-out;
+}
+
+/* ── 8. SKELETON LOADER ─────────────────────────────────────── */
+/*
+  Replaces blank white space while data loads.
+  Prevents layout shift — skeleton matches final content dimensions.
+  Shimmer moves left-to-right at a reading pace.
+*/
+.lm-skeleton {
+  background: linear-gradient(
+    90deg,
+    var(--gray-100) 25%,
+    var(--gray-50)  50%,
+    var(--gray-100) 75%
+  );
+  background-size: 800px 100%;
+  animation: lm-shimmer 1.4s infinite linear;
+  border-radius: var(--radius-sm);
+  display: block;
+}
+
+/* Skeleton variants */
+.lm-skeleton-text  { height: .85rem; margin-bottom: .5rem; }
+.lm-skeleton-title { height: 1.4rem; margin-bottom: .75rem; width: 60%; }
+.lm-skeleton-circle{ border-radius: 50% !important; }
+.lm-skeleton-btn   { height: 2.4rem; width: 120px; }
+.lm-skeleton-card  {
+  background: var(--white);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  padding: 1.5rem;
+  border: 1px solid var(--gray-100);
+}
+
+/* ── 9. PREMIUM SPINNER ─────────────────────────────────────── */
+/*
+  Replaces Bootstrap's default blue spinner with a gold one
+  that matches the premium theme.
+  Used on all loading states throughout the app.
+*/
+.lm-spinner {
+  width: 2.5rem;
+  height: 2.5rem;
+  border: 3px solid rgba(201,168,76,.2);
+  border-top-color: var(--gold-500);
+  border-radius: 50%;
+  animation: lm-spin .75s linear infinite;
+  display: inline-block;
+}
+
+.lm-spinner-sm {
+  width: 1.25rem;
+  height: 1.25rem;
+  border-width: 2px;
+}
+
+.lm-spinner-lg {
+  width: 3.5rem;
+  height: 3.5rem;
+  border-width: 4px;
+}
+
+/* ── 10. NOTIFICATION BADGE PULSE ───────────────────────────── */
+/*
+  Applied to unread count badges in the Navbar and Notification page.
+  Subtle pulse draws attention without being distracting.
+  Stops after the badge is acknowledged (remove class via JS).
+*/
+.lm-badge-pulse {
+  animation: lm-badgePulse 1.8s ease-in-out 3;
+  /* Plays exactly 3 times then stops — not infinite */
+}
+
+/* ── 11. MODAL ENTRANCE ─────────────────────────────────────── */
+/*
+  Modals fade in smoothly instead of appearing instantly.
+  Scale from 97% to 100% gives a gentle "expand" feel.
+*/
+.modal.show .modal-content {
+  animation: lm-scaleIn .2s ease-out both;
+}
+
+/* ── 12. LIST ITEM STAGGER ──────────────────────────────────── */
+/*
+  For notification lists, appointment cards, case cards.
+  Each child gets a progressively longer delay.
+  Applied via nth-child in CSS — no JS needed.
+  Max 6 items — beyond that the delay gets too long.
+*/
+.lm-stagger-list > *:nth-child(1) { animation: lm-fadeIn .3s  .04s ease-out both; }
+.lm-stagger-list > *:nth-child(2) { animation: lm-fadeIn .3s  .09s ease-out both; }
+.lm-stagger-list > *:nth-child(3) { animation: lm-fadeIn .3s  .14s ease-out both; }
+.lm-stagger-list > *:nth-child(4) { animation: lm-fadeIn .3s  .19s ease-out both; }
+.lm-stagger-list > *:nth-child(5) { animation: lm-fadeIn .3s  .24s ease-out both; }
+.lm-stagger-list > *:nth-child(6) { animation: lm-fadeIn .3s  .29s ease-out both; }
+
+/* ── 13. HERO SECTION STAGGER (already uses lm-fade-in-delay) ── */
+/* These are already defined above — kept for reference */
+
+/* ── 14. LINK HOVER UNDERLINE ───────────────────────────────── */
+/*
+  Animated underline for text links — grows from left.
+  Professional alternative to color-change-only links.
+  Used on footer links and nav links.
+*/
+.lm-link-animate {
+  position: relative;
+  text-decoration: none;
+}
+.lm-link-animate::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 0;
+  height: 1px;
+  background: var(--gold-500);
+  transition: width .25s ease;
+}
+.lm-link-animate:hover::after { width: 100%; }
+
+/* ── 15. SCROLL-TRIGGERED SECTION ENTRANCE ──────────────────── */
+/*
+  For sections on the Home page (Statistics, Testimonials, FAQ).
+  Class applied by JS IntersectionObserver in App.jsx.
+  Before triggering: invisible and slightly below position.
+  After triggering: fully visible at correct position.
+*/
+.lm-animate-on-scroll {
+  opacity: 0;
+  transform: translateY(24px);
+  transition: opacity .5s ease, transform .5s ease;
+}
+
+.lm-animate-on-scroll.lm-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* ── 16. TOAST CUSTOMISATION ────────────────────────────────── */
+/*
+  react-toastify dark theme is configured in main.jsx.
+  These overrides add gold accent to the progress bar
+  and ensure the font matches the platform.
+*/
+
+/* ================================
+   1MyLawyer Premium Toast
+================================ */
+
+.lm-toast {
+  border-radius: 12px !important;
+  padding: 0 !important;
+  min-height: 58px !important;
+  background: #ffffff !important;
+  color: #17243d !important;
+  border: 1px solid #e7e9ee !important;
+  border-left: 4px solid #d4af37 !important;
+  box-shadow: 0 10px 30px rgba(15, 29, 55, 0.16) !important;
+  overflow: hidden !important;
+  font-family: var(--font-sans, Arial, sans-serif) !important;
+}
+
+.lm-toast-body {
+  margin: 0 !important;
+  padding: 14px 16px !important;
+  font-size: 14px !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+}
+
+/* Success */
+.Toastify__toast--success.lm-toast {
+  border-left-color: #16a34a !important;
+}
+
+/* Error */
+.Toastify__toast--error.lm-toast {
+  border-left-color: #dc2626 !important;
+}
+
+/* Warning */
+.Toastify__toast--warning.lm-toast {
+  border-left-color: #d4af37 !important;
+}
+
+/* Info */
+.Toastify__toast--info.lm-toast {
+  border-left-color: #2563eb !important;
+}
+
+/* Progress bar */
+.lm-toast .Toastify__progress-bar {
+  height: 3px !important;
+  background: #d4af37 !important;
+}
+
+.lm-toast.Toastify__toast--success .Toastify__progress-bar {
+  background: #16a34a !important;
+}
+
+.lm-toast.Toastify__toast--error .Toastify__progress-bar {
+  background: #dc2626 !important;
+}
+
+/* Close button */
+.lm-toast .Toastify__close-button {
+  color: #64748b !important;
+  opacity: 0.7 !important;
+}
+
+.lm-toast .Toastify__close-button:hover {
+  opacity: 1 !important;
+}
+
+
+
+
+/* ── 17. ACCESSIBILITY — Respect user preferences ───────────── */
+/*
+  Users who have set "prefers-reduced-motion" in their OS
+  have explicitly requested no animations.
+  We honour this by disabling all transitions and animations.
+  This is required for WCAG 2.1 Success Criterion 2.3.3.
+*/
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: .01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: .01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+/* ============================================================
+   FINAL UI POLISH — Consistency, Accessibility, Missing Tokens
+   ============================================================ */
+
+/* ── 1. MISSING DESIGN TOKEN ────────────────────────────────── */
+/*
+  --gray-400 was used in multiple components but never declared.
+  Adding it to fill the gap between --gray-300 and --gray-500.
+*/
+:root {
+  --gray-400: #9ca3af;
+}
+
+/* ── 2. NAVBAR SCROLLED STATE ───────────────────────────────── */
+/*
+  lm-navbar-scrolled class applied by Navbar.jsx on scroll but
+  was never styled. Now adds a stronger shadow to separate
+  the navbar from page content when user has scrolled.
+*/
+.lm-navbar-scrolled {
+  box-shadow: 0 4px 32px rgba(6,14,30,.45) !important;
+}
+
+/* ── 3. NAVBAR BRAND CLASS ──────────────────────────────────── */
+/*
+  Navbar uses className="navbar-brand lm-navbar-brand"
+  but CSS only defined .lm-navbar .navbar-brand.
+  Adding direct class to ensure it works independently.
+*/
+.lm-navbar-brand {
+  font-family: var(--font-serif);
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: var(--white) !important;
+  letter-spacing: -.01em;
+  text-decoration: none;
+}
+.lm-navbar-brand:hover { color: var(--gold-300) !important; }
+.lm-navbar-brand .brand-accent { color: var(--gold-500); }
+
+/* ── 4. KEYBOARD FOCUS VISIBILITY ───────────────────────────── */
+/*
+  WCAG 2.1 SC 2.4.7 — Focus Visible.
+  Keyboard users must see a clear focus indicator on interactive elements.
+  We use :focus-visible (not :focus) so mouse clicks don't show the ring.
+  Gold ring matches the brand and has sufficient contrast on both dark and light.
+*/
+:focus-visible {
+  outline: 2px solid var(--gold-500) !important;
+  outline-offset: 3px !important;
+  border-radius: 3px;
+}
+
+/* Remove default focus for mouse users (already handled by :focus-visible) */
+:focus:not(:focus-visible) { outline: none; }
+
+/* Button-specific focus override — use box-shadow instead of outline
+   so it works on rounded buttons without clipping */
+.btn:focus-visible,
+.btn-gold:focus-visible,
+.btn-navy:focus-visible,
+.btn-outline-gold:focus-visible {
+  outline: none !important;
+  box-shadow: 0 0 0 3px rgba(201,168,76,.55) !important;
+}
+
+/* ── 5. STAT CARD HOVER — Remove double-transform conflict ──── */
+/*
+  .lm-card:hover sets translateY(-4px).
+  .lm-stat-card extends .lm-card-like behaviour but IS NOT .lm-card.
+  The issue: both classes were on the same element in some pages.
+  Fix: stat card hover is defined last with !important and overrides cleanly.
+  Also correcting the over-aggressive scale(1.02) to scale(1.015) —
+  on a tight 4-col grid the growth is too noticeable.
+*/
+.lm-stat-card:hover {
+  transform: translateY(-5px) scale(1.015) !important;
+  box-shadow: var(--shadow-lg) !important;
+}
+
+/* ── 6. SPINNER CONSISTENCY ─────────────────────────────────── */
+/*
+  Bootstrap's spinner-border is still used in some loading buttons.
+  Override it globally to use the gold color so all spinners match.
+*/
+.spinner-border {
+  color: var(--gold-500) !important;
+}
+.spinner-border-sm {
+  width: 1rem !important;
+  height: 1rem !important;
+  border-width: .18em !important;
+}
+
+/* ── 7. CONTRAST IMPROVEMENTS ──────────────────────────────── */
+/*
+  WCAG AA requires 4.5:1 contrast for normal text, 3:1 for large text.
+  These specific fixes address low-contrast combinations found in the audit.
+*/
+
+/* Gray text on white backgrounds: bump from gray-400 to gray-500 minimum */
+.lm-hero-stat-lbl { color: rgba(255,255,255,.65) !important; } /* was .55 — below AA on navy */
+.lm-footer-tagline { color: rgba(255,255,255,.6) !important; }  /* was .5 — improves readability */
+.lm-footer-links a { color: rgba(255,255,255,.7) !important; }  /* was .6 — cleaner on dark */
+
+/* Small badges: ensure text is always readable */
+.badge-navy { color: var(--white) !important; }
+
+/* ── 8. LINK ACCESSIBILITY ──────────────────────────────────── */
+/*
+  Text links in body content should be visually distinguishable.
+  Adding underline-offset for any inline text links.
+*/
+a:not(.btn):not(.nav-link):not(.dropdown-item):not(.navbar-brand):not(.lm-footer-links a) {
+  text-underline-offset: 3px;
+}
+
+/* ── 9. CARD HOVER — TOUCH DEVICE REFINEMENT ───────────────── */
+/*
+  On touch devices, hover states stick after tap (no mouseout event).
+  The existing @media (hover: none) rule disables transforms.
+  Adding the stat card specifically since it was missing from that rule.
+*/
+@media (hover: none) {
+  .lm-stat-card:hover {
+    transform: none !important;
+    box-shadow: var(--shadow-md) !important;
+  }
+}
+
+/* ── 10. FORM LABEL SPACING CONSISTENCY ─────────────────────── */
+/*
+  Some pages use .form-label without .lm-form wrapper.
+  Applying consistent label styles globally.
+*/
+.form-label {
+  font-weight: 600;
+  font-size: .85rem;
+  color: var(--navy-700);
+  margin-bottom: .4rem;
+}
+
+/* ── 11. CARD HEADER PADDING CONSISTENCY ─────────────────────── */
+/*
+  Some card headers use p-4, others use lm-card-header.
+  Standardising: lm-card-header padding is 1.25rem 1.5rem on mobile.
+*/
+@media (max-width: 575px) {
+  .lm-card-header {
+    padding: 1rem 1.25rem !important;
+  }
+  .lm-card-title { font-size: .95rem !important; }
+}
+
+/* ── 12. EMPTY STATE ICON CONSISTENCY ──────────────────────── */
+/*
+  Standardise empty state icon display across all pages.
+  Emoji icons render at different sizes across OS and browsers.
+  Setting explicit size and neutral background circle.
+*/
+.lm-empty-state .icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 80px;
+  background: var(--gold-100);
+  border: 2px solid rgba(201,168,76,.2);
+  border-radius: 50%;
+  font-size: 2rem !important;
+  margin-bottom: 1.25rem;
+}
+
+/* ── 13. BUTTON TEXT TRANSFORM CONSISTENCY ──────────────────── */
+/*
+  btn-gold uses text-transform: uppercase.
+  btn-navy and btn-outline-gold do not.
+  Making all primary action buttons consistent.
+  Secondary/outline buttons stay normal case for hierarchy.
+*/
+.btn-navy {
+  text-transform: uppercase;
+  font-size: .85rem;
+  letter-spacing: .02em;
+}
+.btn-outline-gold {
+  text-transform: uppercase;
+  font-size: .85rem;
+}
+
+/* ── 14. GOLD BAR MARGIN CONSISTENCY ────────────────────────── */
+/*
+  .lm-gold-bar uses margin-bottom: 1rem.
+  In some page headers it's called without margin classes causing overlap.
+  Making the bottom margin a consistent .75rem everywhere.
+*/
+.lm-gold-bar { margin-bottom: .75rem; }
+
+/* ── 15. INPUT PLACEHOLDER COLOR ───────────────────────────── */
+/*
+  Browser default placeholder is too faint on some systems.
+  Standardising to --gray-400 for consistent readability.
+*/
+::placeholder { color: var(--gray-400) !important; opacity: 1 !important; }
+
+/* ── 16. SCROLLBAR CONSISTENCY ──────────────────────────────── */
+/*
+  Firefox uses scrollbar-width / scrollbar-color.
+  Adding Firefox-compatible scrollbar styling to match the WebKit one.
+*/
+* {
+  scrollbar-width: thin;
+  scrollbar-color: var(--navy-500) var(--gray-100);
+}
+
+/* ── 17. SELECTION COLOR ────────────────────────────────────── */
+/*
+  When user selects text, the default blue highlight clashes with Navy+Gold.
+  Matching the selection to the brand palette.
+*/
+::selection {
+  background: rgba(201,168,76,.25);
+  color: var(--navy-900);
+}
+
+/* ── 18. PRINT STYLES ───────────────────────────────────────── */
+/*
+  Users may print receipts, case details, or documents.
+  Hide navigation and decorative elements, show content cleanly.
+*/
+@media print {
+  .lm-navbar, .lm-footer, .btn, .lm-page-header::before { display: none !important; }
+  .lm-page-header {
+    background: none !important;
+    color: var(--gray-900) !important;
+    padding: 1rem 0 !important;
+  }
+  .lm-card {
+    box-shadow: none !important;
+    border: 1px solid var(--gray-300) !important;
+  }
+  body { font-size: 12pt; color: #000; }
+  a { color: #000 !important; text-decoration: underline; }
+}
+
+
+/* ============================================================
+   LOGIN PAGE — Premium Two-Column Corporate Layout
+   Prefix: ll- (Login Local) — scoped, no global side effects
+   ============================================================ */
+
+
+/* ── Full-viewport wrapper ────────────────────────────────── */
+.ll-page {
+  background: linear-gradient(135deg, var(--navy-900) 0%, var(--navy-700) 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 2rem 1rem;
+}
+
+/* ── Outer card ───────────────────────────────────────────── */
+.ll-card {
+  display: flex;
+  width: 100%;
+  max-width: 1100px;
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow:
+    0 32px 80px rgba(6,14,30,.55),
+    0 8px 24px rgba(6,14,30,.35);
+}
+
+/* ── Left branding panel ─────────────────────────────────── */
+.ll-left {
+  flex: 0 0 44%;
+  background: linear-gradient(160deg, var(--navy-900) 0%, #0d1f3c 60%, #1a3a5c 100%);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 3rem 2.5rem 2rem;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Decorative rings */
+.ll-left::before {
+  content: '';
+  position: absolute;
+  width: 320px; height: 320px;
+  border: 1px solid rgba(201,168,76,.12);
+  border-radius: 50%;
+  top: -80px; right: -80px;
+  pointer-events: none;
+}
+.ll-left::after {
+  content: '';
+  position: absolute;
+  width: 200px; height: 200px;
+  border: 1px solid rgba(201,168,76,.08);
+  border-radius: 50%;
+  bottom: 40px; left: -60px;
+  pointer-events: none;
+}
+
+/* Content vertically centred */
+.ll-left-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+  flex: 1;
+  justify-content: center;
+}
+
+/* Logo */
+.ll-logo {
+  font-family: var(--font-serif);
+  font-size: 1.65rem;
+  font-weight: 800;
+  color: var(--white);
+  text-decoration: none;
+  letter-spacing: -.02em;
+  display: inline-block;
+}
+.ll-logo:hover { color: var(--gold-300); text-decoration: none; }
+
+.ll-logo-sub {
+  font-size: .78rem;
+  color: rgba(255,255,255,.45);
+  margin: .25rem 0 0;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+/* Gold rule */
+.ll-gold-rule {
+  width: 48px; height: 3px;
+  background: linear-gradient(90deg, var(--gold-500), var(--gold-300));
+  border-radius: 2px;
+}
+
+/* Branding heading */
+.ll-brand-h {
+  font-family: var(--font-serif);
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 800;
+  color: var(--white);
+  line-height: 1.25;
+  margin: 0;
+}
+
+/* Gold text */
+.llg { color: var(--gold-400); }
+
+/* Feature list */
+.ll-feat {
+  display: flex;
+  align-items: center;
+  gap: .65rem;
+  padding: .35rem 0;
+}
+.ll-feat-dot {
+  width: 22px; height: 22px;
+  border-radius: 50%;
+  background: rgba(201,168,76,.18);
+  border: 1px solid rgba(201,168,76,.35);
+  color: var(--gold-400);
+  font-size: .65rem;
+  display: flex; align-items: center; justify-content: center;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+.ll-feat-text {
+  font-size: .88rem;
+  color: rgba(255,255,255,.78);
+  font-weight: 500;
+}
+
+/* Copyright */
+.ll-copy {
+  font-size: .72rem;
+  color: rgba(255,255,255,.3);
+  margin: 0;
+}
+
+/* ── Mobile brand strip ─────────────────────────────────── */
+.ll-mob {
+  display: none;
+  text-align: center;
+  padding: 1.75rem 1.5rem 1.25rem;
+  background: var(--navy-900);
+}
+.ll-mob .ll-logo     { font-size: 1.45rem; }
+.ll-mob .ll-logo-sub { margin: .2rem 0 0; }
+
+/* ── Right form panel ────────────────────────────────────── */
+.ll-right {
+  flex: 1;
+  background: #fff;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 3rem 2.75rem;
+  overflow-y: auto;
+  min-width: 0;
+}
+
+/* Gold eyebrow bar */
+.ll-eyebrow {
+  width: 36px; height: 3px;
+  background: var(--gold-500);
+  border-radius: 2px;
+  margin-bottom: 1.1rem;
+}
+
+/* Page title */
+.ll-h1 {
+  font-family: var(--font-serif);
+  font-size: clamp(1.55rem, 3vw, 1.9rem);
+  font-weight: 800;
+  color: var(--navy-800);
+  margin: 0 0 .35rem;
+  line-height: 1.2;
+}
+
+/* Subtitle */
+.ll-desc {
+  font-size: .9rem;
+  color: var(--gray-500);
+  margin: 0 0 1.75rem;
+}
+
+/* ── Form fields ─────────────────────────────────────────── */
+.ll-field {
+  margin-bottom: 1.25rem;
+}
+
+/* Two-column row */
+.ll-two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.25rem;
+}
+
+/* Label */
+.ll-label {
+  display: block;
+  font-size: .78rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: .07em;
+  color: var(--navy-700);
+  margin-bottom: .4rem;
+}
+
+/* Input */
+.ll-input {
+  display: block;
+  width: 100%;
+  padding: .7rem 1rem;
+  font-size: .92rem;
+  font-family: var(--font-sans);
+  color: var(--gray-900);
+  background: #fff;
+  border: 1.5px solid var(--gray-200);
+  border-radius: 8px;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+  box-sizing: border-box;
+}
+.ll-input::placeholder { color: var(--gray-400); }
+.ll-input:focus {
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 3px rgba(201,168,76,.18);
+}
+
+/* Submit button */
+.ll-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .6rem;
+  width: 100%;
+  padding: .85rem 1.5rem;
+  font-size: .92rem;
+  font-weight: 700;
+  font-family: var(--font-sans);
+  letter-spacing: .05em;
+  text-transform: uppercase;
+  color: var(--navy-900);
+  background: linear-gradient(135deg, var(--gold-400), var(--gold-500));
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  box-shadow: 0 4px 16px rgba(201,168,76,.35);
+  transition: background .2s ease, transform .15s ease, box-shadow .2s ease;
+  margin-bottom: .25rem;
+}
+.ll-btn:hover:not(:disabled) {
+  background: linear-gradient(135deg, var(--gold-300), var(--gold-400));
+  transform: translateY(-2px);
+  box-shadow: 0 6px 24px rgba(201,168,76,.45);
+}
+.ll-btn:active:not(:disabled) { transform: translateY(0) scale(.99); }
+.ll-btn:disabled { opacity: .72; cursor: not-allowed; }
+
+/* Button spinner */
+.ll-spin {
+  width: 16px; height: 16px;
+  border: 2px solid rgba(10,22,40,.25);
+  border-top-color: var(--navy-800);
+  border-radius: 50%;
+  display: inline-block;
+  animation: lm-spin .7s linear infinite;
+  flex-shrink: 0;
+}
+
+/* Footer link row */
+.ll-foot {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-size: .88rem;
+  color: var(--gray-500);
+}
+.ll-foot a {
+  color: var(--navy-700);
+  font-weight: 700;
+  text-decoration: none;
+  margin-left: .25rem;
+  transition: color .15s;
+}
+.ll-foot a:hover { color: var(--gold-600); }
+
+/* Divider ("or" separator used on Login) */
+.ll-divider {
+  display: flex;
+  align-items: center;
+  gap: .75rem;
+  margin: 1.25rem 0;
+  color: var(--gray-300);
+  font-size: .78rem;
+}
+.ll-divider::before,
+.ll-divider::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: var(--gray-200);
+}
+
+/* ── Responsive ──────────────────────────────────────────── */
+
+/* Tablet (768–991px) */
+@media (min-width: 768px) and (max-width: 991px) {
+  .ll-card   { max-width: 860px; min-height: auto; }
+  .ll-left   { flex: 0 0 40%; padding: 2.5rem 2rem 1.75rem; }
+  .ll-right  { padding: 2.5rem 2rem; }
+  .ll-brand-h { font-size: 1.5rem; }
+}
+
+/* Mobile (< 768px): stack columns */
+@media (max-width: 767px) {
+  .ll-page {
+    padding: 0;
+    align-items: flex-start;
+    background: var(--navy-900);
+  }
+  .ll-card {
+    flex-direction: column;
+    border-radius: 0;
+    min-height: 100vh;
+    box-shadow: none;
+  }
+
+  /* Hide desktop left panel, show mobile strip */
+  .ll-left { display: none; }
+  .ll-mob  { display: block; }
+
+  .ll-right {
+    padding: 1.75rem 1.25rem 2.5rem;
+    flex: 1;
+    justify-content: flex-start;
+  }
+
+  /* Stack two-col grids to one column */
+  .ll-two-col {
+    grid-template-columns: 1fr;
+    gap: .85rem;
+  }
+
+  .ll-h1   { font-size: 1.5rem; }
+  .ll-desc { font-size: .85rem; margin-bottom: 1.25rem; }
+  .ll-input { font-size: 1rem; }   /* prevents iOS auto-zoom */
+}
+
+/* Extra small phones */
+@media (max-width: 399px) {
+  .ll-right { padding: 1.5rem 1rem 2rem; }
+}
+
+
+/* Universal fix for all inputs and search bars across the website */
+input:focus, 
+input[type="text"]:focus,
+input[type="search"]:focus,
+textarea:focus,
+select:focus {
+  box-shadow: none !important;
+  outline: none !important;
+  border-color: var(--gold-500) !important; /* Optional: Agar focus par gold border chahiye */
+}
+
+.sidebar-container { /* Aapki actual class ka naam use karein */
+    min-height: 100vh; /* Screen ki poori height lega */
+    background-color: var(--navy-900); /* Jo upar dark color hai wahi same yahan lagayein */
+}
+
+.mobile-menu {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    height: 100%;
+    background-color: #0d1f3c; /* Aapka dark color */
+    overflow-y: auto;
+}
+
+
+.was-validated .form-control:invalid {
+  border-color: #dc3545;
+}
+
+.was-validated .form-control:valid {
+  border-color: #198754;
+}
+
+.lm-card{
+  transition: all .3s ease;
+}
+
+.lm-card:hover{
+  transform: translateY(-8px);
+  box-shadow: 0 15px 35px rgba(0,0,0,.12);
+}
+
+
+.was-validated .form-control:valid,
+.was-validated .form-select:valid {
+    border:2px solid #198754;
+    box-shadow:none;
+}
+
+.was-validated .form-control:invalid,
+.was-validated .form-select:invalid {
+    border:2px solid #dc3545;
+    box-shadow:none;
+}
+
+.valid-feedback{
+    display:block;
+}
+
+.invalid-feedback{
+    display:block;
+}
