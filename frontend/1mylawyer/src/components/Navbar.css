@@ -1312,3 +1312,83 @@
     border: 1px solid rgba(212, 175, 55, 0.2);
   }
 }
+
+
+
+
+
+
+
+/* =========================================================
+   FINAL MOBILE SIGN IN / GET STARTED FIX
+   ========================================================= */
+
+@media screen and (max-width: 991px) {
+
+  .nb-drawer .nb-auth-btns {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: stretch !important;
+    gap: 12px !important;
+    width: 100% !important;
+    margin: 12px 0 4px !important;
+  }
+
+  .nb-drawer .nb-auth-btns a.nb-btn-in,
+  .nb-drawer .nb-auth-btns a.nb-btn-go {
+    display: flex !important;
+    width: 100% !important;
+    min-height: 48px !important;
+    box-sizing: border-box !important;
+
+    align-items: center !important;
+    justify-content: center !important;
+
+    margin: 0 !important;
+    padding: 12px 16px !important;
+
+    font-size: 16px !important;
+    font-weight: 600 !important;
+    line-height: 1.2 !important;
+
+    text-align: center !important;
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+
+    border-radius: 10px !important;
+  }
+
+  /* SIGN IN */
+  .nb-drawer .nb-auth-btns a.nb-btn-in {
+    color: #ffffff !important;
+    background: transparent !important;
+    border: 1px solid #D4AF37 !important;
+  }
+
+  /* GET STARTED */
+  .nb-drawer .nb-auth-btns a.nb-btn-go {
+    color: #081A38 !important;
+    background: #D4AF37 !important;
+    border: 1px solid #D4AF37 !important;
+  }
+
+  /* Remove browser/global link styling */
+  .nb-drawer .nb-auth-btns a.nb-btn-in:hover,
+  .nb-drawer .nb-auth-btns a.nb-btn-in:focus,
+  .nb-drawer .nb-auth-btns a.nb-btn-go:hover,
+  .nb-drawer .nb-auth-btns a.nb-btn-go:focus {
+    text-decoration: none !important;
+    text-decoration-line: none !important;
+    outline: none !important;
+  }
+
+  .nb-drawer .nb-auth-btns a.nb-btn-in:hover {
+    color: #D4AF37 !important;
+    background: rgba(212, 175, 55, 0.10) !important;
+  }
+
+  .nb-drawer .nb-auth-btns a.nb-btn-go:hover {
+    color: #081A38 !important;
+    background: #e8c96d !important;
+  }
+}
