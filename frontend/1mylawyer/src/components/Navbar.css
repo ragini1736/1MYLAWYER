@@ -657,3 +657,658 @@
     border: 1px solid rgba(212, 175, 55, 0.2);
   }
 }
+
+
+
+.nb-bar {
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 72px;
+  background: #081A38;
+  border-bottom: 1px solid rgba(212, 175, 55, 0.15);
+  box-shadow: 0 2px 24px rgba(0, 0, 0, 0.4);
+  z-index: 1020;
+  transition: background 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nb-bar.nb-bar--scrolled {
+  background: #060d1e;
+  box-shadow: 0 4px 32px rgba(0, 0, 0, 0.6);
+  border-bottom-color: rgba(212, 175, 55, 0.08);
+}
+
+/* ── 2. Inner container ─────────────────────────────────────── */
+.nb-bar .nb-inner {
+  max-width: 1400px;
+  width: 100%;
+  height: 100%;
+  margin: 0 auto;
+  padding: 0 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0;
+}
+
+/* ── 3. Brand / Logo ────────────────────────────────────────── */
+.nb-bar .nb-brand {
+  flex-shrink: 0;
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 1.5rem;
+  font-weight: 800;
+  color: #ffffff !important;
+  text-decoration: none !important;
+  letter-spacing: -0.02em;
+  white-space: nowrap;
+  transition: color 0.2s ease;
+}
+
+.nb-bar .nb-brand:hover {
+  color: #e8c96d !important;
+}
+
+.nb-bar .nb-brand .nb-accent {
+  color: #D4AF37;
+}
+
+/* ── 4. Desktop wrapper ─────────────────────────────────────── */
+.nb-bar .nb-desktop-items {
+  flex: 1 1 0%;
+  min-width: 0;
+  margin-left: 2rem;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: nowrap;
+  gap: 0;
+}
+
+/* ── 5. Desktop nav links ───────────────────────────────────── */
+.nb-bar .nb-desktop-nav {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.15rem;
+  flex-wrap: nowrap;
+}
+
+.nb-bar .nb-link {
+  position: relative;
+  display: inline-block;
+  color: rgba(255, 255, 255, 0.85);
+  font-size: 1.35rem;
+  font-weight: 600;
+  padding: 0.45rem 0.9rem;
+  border-radius: 6px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  letter-spacing: 0.01em;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nb-bar .nb-link::after {
+  content: '';
+  position: absolute;
+  bottom: 3px;
+  left: 0.9rem;
+  right: 0.9rem;
+  height: 2px;
+  background: #D4AF37;
+  border-radius: 1px;
+  transform: scaleX(0);
+  transform-origin: center;
+  transition: transform 0.2s ease;
+}
+
+.nb-bar .nb-link:hover {
+  color: #D4AF37;
+  background: rgba(212, 175, 55, 0.08);
+  text-decoration: none !important;
+}
+
+.nb-bar .nb-link:hover::after,
+.nb-bar .nb-link.nb-link--active::after {
+  transform: scaleX(1);
+}
+
+.nb-bar .nb-link.nb-link--active {
+  color: #D4AF37 !important;
+}
+
+/* ── 6. Desktop auth ────────────────────────────────────────── */
+.nb-bar .nb-desktop-auth {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+}
+
+/* ── 7. Auth Buttons ────────────────────────────────────────── */
+.nb-bar .nb-auth-btns {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: nowrap;
+}
+
+.nb-bar .nb-btn-in {
+  display: inline-flex;
+  align-items: center;
+  color: rgba(255, 255, 255, 0.9);
+  font-weight: 600;
+  font-size: 1.2rem;
+  padding: 0.65rem 0.8rem;
+  border-radius: 6px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  transition: color 0.2s ease, background 0.2s ease;
+}
+
+.nb-bar .nb-btn-in:hover {
+  color: var(--gold-500);
+  background: rgba(255, 255, 255, 0.08);
+  text-decoration: none !important;
+}
+
+.nb-bar .nb-btn-go {
+  display: inline-flex;
+  align-items: center;
+  background: #D4AF37;
+  color: #081A38 !important;
+  font-weight: 700;
+  font-size: 0.85rem;
+  padding: 0.5rem 1.25rem;
+  border-radius: 20px;
+  text-decoration: none !important;
+  white-space: nowrap;
+  letter-spacing: 0.02em;
+  box-shadow: 0 2px 12px rgba(212, 175, 55, 0.35);
+  transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.15s ease;
+}
+
+.nb-bar .nb-btn-go:hover {
+  background: #e8c96d;
+  color: #081A38 !important;
+  box-shadow: 0 4px 18px rgba(212, 175, 55, 0.5);
+  transform: translateY(-1px);
+  text-decoration: none !important;
+}
+
+/* ── 8. Profile dropdown trigger ───────────────────────────── */
+.nb-bar .nb-drop {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nb-bar .nb-profile-btn {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.6rem;
+  background: transparent;
+  border: 1.5px solid #D4AF37;
+  padding: 5px 12px 5px 6px;
+  border-radius: 30px;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: background 0.2s ease, box-shadow 0.2s ease;
+}
+
+.nb-bar .nb-profile-btn:hover,
+.nb-bar .nb-profile-btn.nb-profile-btn--open {
+  background: rgba(212, 175, 55, 0.12);
+  box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.15);
+}
+
+.nb-bar .nb-avatar {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #D4AF37;
+  color: #081A38;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 0.875rem;
+  flex-shrink: 0;
+}
+
+.nb-bar .nb-uname {
+  font-weight: 600;
+  font-size: 0.875rem;
+  color: #ffffff;
+  white-space: nowrap;
+  max-width: 110px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.nb-bar .nb-chevron {
+  color: #D4AF37;
+  font-size: 0.75rem;
+  display: inline-block;
+  flex-shrink: 0;
+  transition: transform 0.2s ease;
+}
+
+/* ── 9. Profile panel dropdown ──────────────────────────────── */
+.nb-panel {
+  position: absolute;
+  top: calc(100% + 14px);
+  right: 0;
+  width: 264px;
+  max-height: 350px;
+  height:350px;
+  background: linear-gradient(160deg, #0a1628, #060e1e);
+  border: 1px solid rgba(212, 175, 55, 0.18);
+  border-radius: 14px;
+  box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5), 0 4px 16px rgba(0, 0, 0, 0.3);
+  z-index: 1021;
+  overflow: hidden;
+
+  display: flex;
+  flex-direction: column;
+  animation: nb-panel-in 0.18s ease both;
+}
+
+.nb-panel__head {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 1rem 0.75rem;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  flex-shrink: 0;
+}
+
+/* Only the list scrolls — head and foot stay pinned */
+.nb-panel__list {
+  list-style: none;
+  padding: 0.5rem;
+  margin: 0;
+  overflow-y: auto;
+  overflow-x:auto;
+  flex: 1 1 auto;
+  scrollbar-width: none;
+}
+
+.nb-panel__list::-webkit-scrollbar {
+  display: none;
+}
+
+.nb-panel__sep {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0;
+  flex-shrink: 0;
+}
+
+.nb-panel__foot {
+  padding: 0.5rem;
+  flex-shrink: 0;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+@keyframes nb-panel-in {
+  from { opacity: 0; transform: translateY(-6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nb-panel .nb-avatar--lg {
+  width: 42px;
+  height: 42px;
+  font-size: 1.15rem;
+  flex-shrink: 0;
+}
+
+.nb-panel .nb-panel__name {
+  font-weight: 700;
+  font-size: 0.9rem;
+  color: #ffffff;
+  margin: 0;
+  line-height: 1.25;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nb-panel .nb-panel__email {
+  font-size: 0.78rem;
+  color: rgba(255, 255, 255, 0.55);
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.nb-panel__list li {
+  margin: 0;
+  padding: 0;
+}
+
+.nb-panel__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.6rem 0.75rem;
+  border-radius: 8px;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none !important;
+  background: none;
+  border: none;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.18s ease, color 0.18s ease;
+  line-height: 1.4;
+}
+
+.nb-panel__item:hover {
+  background: rgba(212, 175, 55, 0.1);
+  color: #D4AF37;
+  text-decoration: none !important;
+}
+
+.nb-panel__item.nb-panel__item--active {
+  background: rgba(212, 175, 55, 0.14);
+  color: #e8c96d !important;
+}
+
+.nb-panel__icon {
+  font-size: 0.9rem;
+  width: 20px;
+  text-align: center;
+  flex-shrink: 0;
+}
+
+.nb-panel__item.nb-panel__item--out {
+  color: #fca5a5;
+}
+
+.nb-panel__item.nb-panel__item--out:hover {
+  background: rgba(239, 68, 68, 0.1);
+  color: #f87171;
+}
+
+/* ── 10. Hamburger (mobile only) ────────────────────────────── */
+/*
+  BASE: hidden on all screen sizes.
+  Shown ONLY by the <992px media query below.
+  Using .nb-bar scoping to beat any external override.
+*/
+.nb-bar .nb-mobile-only {
+  display: none;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.nb-bar .nb-hamburger {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: 1.5px solid rgba(212, 175, 55, 0.4);
+  border-radius: 8px;
+  padding: 8px 10px;
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+
+.nb-bar .nb-hamburger:hover {
+  border-color: #D4AF37;
+  background: rgba(212, 175, 55, 0.08);
+}
+
+.nb-ham-icon {
+  display: block;
+  position: relative;
+  width: 22px;
+  height: 16px;
+}
+
+.nb-ham-icon span {
+  display: block;
+  position: absolute;
+  height: 2.5px;
+  width: 100%;
+  background: #ffffff;
+  border-radius: 2px;
+  left: 0;
+  transition: all 0.25s ease-in-out;
+}
+
+.nb-ham-icon span:nth-child(1) { top: 0; }
+.nb-ham-icon span:nth-child(2) { top: 6.5px; }
+.nb-ham-icon span:nth-child(3) { top: 13px; }
+
+.nb-ham-icon.nb-ham-icon--open span:nth-child(1) {
+  top: 6.5px;
+  transform: rotate(135deg);
+}
+.nb-ham-icon.nb-ham-icon--open span:nth-child(2) {
+  opacity: 0;
+  transform: translateX(-100%);
+}
+.nb-ham-icon.nb-ham-icon--open span:nth-child(3) {
+  top: 6.5px;
+  transform: rotate(-135deg);
+}
+
+/* ── 11. Mobile Backdrop ────────────────────────────────────── */
+.nb-backdrop {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.55);
+  z-index: 1030;
+  animation: nb-fade-in 0.2s ease both;
+}
+
+@keyframes nb-fade-in {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+/* ── 12. Mobile Drawer ──────────────────────────────────────── */
+.nb-drawer {
+  position: fixed;
+  top: 80px;
+  left: 0.75rem;
+  right: 0.75rem;
+  background: linear-gradient(160deg, #0a1628, #081A38);
+  border: 1px solid rgba(212, 175, 55, 0.15);
+  border-radius: 14px;
+  padding: 0.75rem;
+  z-index: 1040;
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5);
+  animation: nb-drawer-in 0.22s ease both;
+}
+
+@keyframes nb-drawer-in {
+  from { opacity: 0; transform: translateY(-8px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.nb-drawer .nb-drawer-link {
+  display: block;
+  color: rgba(255, 255, 255, 0.82);
+  font-size: 0.925rem;
+  font-weight: 600;
+  padding: 0.75rem 1rem;
+  border-radius: 8px;
+  text-decoration: none !important;
+  transition: background 0.18s ease, color 0.18s ease;
+}
+
+.nb-drawer .nb-drawer-link:hover {
+  background: rgba(255, 255, 255, 0.07);
+  color: #ffffff;
+  text-decoration: none !important;
+}
+
+.nb-drawer .nb-drawer-link.nb-drawer-link--active {
+  color: #D4AF37 !important;
+  background: rgba(212, 175, 55, 0.1);
+}
+
+.nb-drawer .nb-drawer-sep {
+  height: 1px;
+  background: rgba(255, 255, 255, 0.08);
+  margin: 0.5rem 0;
+}
+
+/* ===================================================================
+   RESPONSIVE BREAKPOINTS
+   All rules use !important to guarantee they cannot be overridden
+   by Bootstrap or any other library loaded before this file.
+   =================================================================== */
+
+/* ── DESKTOP: >= 992px ──────────────────────────────────────── */
+@media (min-width: 992px) {
+  .nb-desktop-items {
+    display: flex !important;
+  }
+
+  .nb-mobile-only {
+    display: none !important;
+  }
+
+  .nb-drawer,
+  .nb-backdrop {
+    display: none !important;
+  }
+}
+
+/* ── MOBILE / TABLET: <= 991px ──────────────────────────────── */
+@media (max-width: 991px) {
+  .nb-desktop-items {
+    display: none !important;
+  }
+
+  .nb-mobile-only {
+    display: block !important;
+    margin-left: auto;
+  }
+
+  .nb-bar {
+    height: 68px;
+  }
+
+  .nb-bar .nb-inner {
+    padding: 0 1rem;
+  }
+
+  .nb-drawer {
+    top: 68px;
+  }
+}
+
+/* ── Extra-small: <= 480px ──────────────────────────────────── */
+@media (max-width: 480px) {
+  .nb-bar .nb-brand {
+    font-size: 1.25rem;
+  }
+
+  .nb-drawer {
+    left: 0.5rem;
+    right: 0.5rem;
+  }
+}
+
+
+
+/* ===== FORCE DESKTOP NAVBAR ===== */
+@media screen and (min-width: 992px) {
+
+  .nb-mobile-only {
+    display: none !important;
+  }
+
+  .nb-desktop-items {
+    display: flex !important;
+    flex: 1 !important;
+    justify-content: space-between !important;
+    align-items: center !important;
+  }
+
+  .nb-desktop-nav {
+    display: flex !important;
+  }
+
+  .nb-desktop-auth {
+    display: flex !important;
+  }
+}
+
+
+/* ── Mobile View Fixes (Drawer, Avatar & Scrolling) ──────────────── */
+@media (max-width: 991px) {
+  /* 1. Poora mobile drawer scrollable banega */
+  .nb-drawer {
+    top: 68px;
+    max-height: calc(100vh - 85px);
+    overflow-y: auto; 
+  }
+
+  /* 2. Mobile mein profile button ki styling aur layout */
+  .nb-drawer .nb-profile-btn {
+    display: flex !important;
+    align-items: center;
+    gap: 0.8rem;
+    color: #ffffff;
+    background: transparent !important;
+    border: 1.5px solid #D4AF37;
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: 8px;
+    text-align: left;
+  }
+
+  /* 3. Golden Avatar circle wapas laane ke liye */
+  .nb-drawer .nb-avatar {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    background: #D4AF37;
+    color: #081A38;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 0.9rem;
+    flex-shrink: 0;
+  }
+
+  /* 4. Mobile drawer ke andar dropdown panel aur uska internal scroll */
+  .nb-drawer .nb-panel {
+    position: static !important; 
+    width: 100%;
+    max-height: 250px;
+    overflow-y: auto; 
+    margin-top: 10px;
+    box-shadow: none;
+    border: 1px solid rgba(212, 175, 55, 0.2);
+  }
+}
